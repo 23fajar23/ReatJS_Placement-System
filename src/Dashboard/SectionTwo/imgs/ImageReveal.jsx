@@ -1,6 +1,10 @@
 import gsap from "gsap";
 import "../imgs/ImgsStyle.css";
 import { useEffect, useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger)
+
 export const ImageReveal = () => {
     const h1 = useRef(null)
     const h2 = useRef(null)
@@ -10,22 +14,22 @@ export const ImageReveal = () => {
     useEffect(() => {
         const elements = [h1,h2,h3,h4];
 
-        elements.forEach((ref) => {
-            gsap.fromTo(ref.current, {
-                opacity : 0,
-                y : 100
-            },{
-                opacity: 1,
-            y: 0,
-            duration: 1,
-            scrollTrigger: {
-            trigger: ref.current,
-            start: "top 80%",
-            end: "top 30%",
-            scrub: true
-            }
+            elements.forEach((ref) => {
+                    gsap.fromTo(ref.current, {
+                        opacity : 0,
+                        y : 20
+                    },{
+                        opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    scrollTrigger: {
+                    trigger: ref.current,
+                    start: "top 80%",
+                    end: "top 0%",
+                    toggleActions: "play none none none "
+                    }
+                    })
             })
-        })
     },[])
 
    
