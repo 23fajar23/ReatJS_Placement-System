@@ -1,0 +1,54 @@
+.login-bg-img{
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/getspot-app.appspot.com/o/ant-rozetsky-HXOllTSwrpM-unsplash.jpg?alt=media&token=595abd17-116b-4a79-9d9f-761c0e0dbd83");
+    background-size: cover;
+    background-position: center;
+    width:100vw;
+    height: 100vh;
+}
+
+.Title{
+    font-size: 85px;
+    color: white;
+    font-family: "Archivo", sans-serif;
+}
+.mask{
+    /* background-color: black; */
+    height: 100vh;
+    
+}
+
+.register{
+    margin-right: 20px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-bottom: solid 1px white;
+    background: none;
+    color: white;
+    width: 280px;
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.register::placeholder{
+    color: whitesmoke;
+    opacity: 0.8;
+}
+
+.loginbtn{
+    border: 0;
+    outline: 0;  
+    border-radius: 20px; 
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.cn{
+    padding: 30px;
+}
+
+.frgt{
+    padding-top: 8px;
+    margin-top: 20px;
+    color: white;
+    font-weight: 400;
+}

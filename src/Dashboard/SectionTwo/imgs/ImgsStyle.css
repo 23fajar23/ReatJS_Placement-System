@@ -1,0 +1,23 @@
+.image-container {
+    position: relative;
+    display: flex;
+    gap: 5px;
+}
+
+.images {
+    display: block;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.image-text {
+    position: absolute;
+    border: 0;
+    background-color: transparent;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #00bfff;
+    font-size: 20px;
+    font-weight: bold;
+}
