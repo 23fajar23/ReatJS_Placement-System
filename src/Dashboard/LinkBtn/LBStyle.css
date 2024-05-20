@@ -1,0 +1,16 @@
+.arw{
+    outline: 0;
+    border-radius: 100px;
+    color: black;
+    background-color: white;
+}
+.bgbtnx{
+    background-color: #00bfff;
+    padding: 10px;
+    
+}
+.bttx{
+    background-color: transparent;
+    border: 0;
+    border-radius: 100px;
+}

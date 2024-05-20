@@ -4,6 +4,7 @@ import "../Dashboard/DashboardStyle.css"
 import { SectionOneText } from "./SectionOne/SectionOneText";
 import { SectionOne } from "./SectionOne/SectionOne";
 import { SectionTwo } from "./SectionTwo/SectionTwo";
+import { LinkBtn } from "./LinkBtn/LinkBtn";
 
 export const Dashboard = () => {
     return (
@@ -16,6 +17,9 @@ export const Dashboard = () => {
             <div className="d-flex justify-content-between mt-4">
                 <SectionOneText/>
                 <SectionOne/>
+            </div>
+            <div>
+                <LinkBtn/>
             </div>
             <div className="mt-5">
                 <SectionTwo/>
