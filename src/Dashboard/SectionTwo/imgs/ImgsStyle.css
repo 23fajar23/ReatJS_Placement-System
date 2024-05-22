@@ -12,13 +12,20 @@
     height: 80vh;
     align-content: end;
 }
-
+.x{
+    position: sticky;
+    text-align: center;
+}
 .desc{
-    padding: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     border-radius: 20px;
     color: black;
     background-color: white;
     font-family: "Archivo,sans-serif";
+    align-content: center;
+    padding-left: 20px;
+    padding-right: 25px;
 }
 .i1{
     background-image: url("https://images.unsplash.com/photo-1542546068979-b6affb46ea8f?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");

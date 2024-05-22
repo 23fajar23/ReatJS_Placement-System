@@ -10,7 +10,11 @@ export const ImageReveal = () => {
     const hdesc1 = useRef(null)
     const hdesc2 = useRef(null)
     const hdesc3 = useRef(null)
-    const elements = [hdesc1,hdesc2,hdesc3];
+    const hid1 = useRef(null)
+    const hid2 = useRef(null)
+    const hid3 = useRef(null)
+
+
 
     useEffect(() => {
                 gsap.fromTo(h1.current, {
@@ -20,7 +24,7 @@ export const ImageReveal = () => {
                     opacity: 1,
                 y: 0,
                 duration: 0.8,
-                    scrollTrigger: {
+                scrollTrigger: {
                 trigger: h1.current,
                 start: "top 80%",
                 end: "top 0%",
@@ -29,9 +33,28 @@ export const ImageReveal = () => {
                 })
     },[scroll])
 
+    useEffect(()=>{
+        setAll(h1.current)
+        setHide(hid1.current)
+        setHide(hid2.current)
+        setHide(hid3.current)
+    },[])
+
+    const setAll = (element) => {
+        gsap.set(element,{
+            height:100
+        })
+    }
+
+    const setHide = (element) => {
+        gsap.set(element,{
+            color:"transparent"
+        })
+    }
     const handleIn = (element) => {
         gsap.to(element, {
-            y: -20,
+            y: -30,
+            height:135,
             boxShadow: "0px 10px 8px rgba(0, 0, 0, 0.20)",
         });
     };
@@ -39,31 +62,49 @@ export const ImageReveal = () => {
     const handleOut = (element) => {
         gsap.to(element, {
             y: 0,
+            height:"auto",
             boxShadow: "0px 0px 0px rgba(0, 0, 0, 0)",
         });
     };
 
+    const handleDescIn = (element) => {
+        gsap.to(element,{
+            color:"black"
+        })
+    }
+    const handleDescOut = (element) => {
+        gsap.to(element,{
+            color:"transparent"
+        })
+    }
+
     return (
         <div className="image-container" ref={h1}>
             <div className="images i1">
-                <div className="desc " ref={hdesc1} onMouseEnter={() => { handleIn(hdesc1.current)}} onMouseLeave={() =>{handleOut(hdesc1.current)}}>
-                    <h3>Work with your clients</h3>
-                    <h5>GetSpot will help you manage numerous 
+                <div className="desc " ref={hdesc1} 
+                onMouseEnter={() => { handleIn(hdesc1.current),handleDescIn(hid1.current)}} 
+                onMouseLeave={() =>{handleOut(hdesc1.current),handleDescOut(hid1.current)}}>
+                    <h3 className="x">Work with your clients</h3>
+                    <h5 ref={hid1} className="x">GetSpot will help you manage numerous 
                         clients you have in a single click </h5>
                 </div>
             </div>
             <div className="images i2">
-                <div className="desc " ref={hdesc2} onMouseEnter={() => { handleIn(hdesc2.current)}} onMouseLeave={() =>{handleOut(hdesc2.current)}}>
-                    <h3>Manage your trainees</h3>
-                    <h5>GetSpot designed to help you manage
+                <div className="desc " ref={hdesc2} 
+                onMouseEnter={() => { handleIn(hdesc2.current), handleDescIn(hid2.current)}} 
+                onMouseLeave={() =>{handleOut(hdesc2.current), handleDescOut(hid2.current)}}>
+                    <h3 className="x">Manage your trainees</h3>
+                    <h5 ref={hid2} className="x">GetSpot designed to help you manage
                         and help trainee get onboard fast 
                     </h5>
                 </div>
             </div>
             <div className="images i3">
-                <div className="desc " ref={hdesc3} onMouseEnter={() => { handleIn(hdesc3.current)}} onMouseLeave={() =>{handleOut(hdesc3.current)}}>
-                    <h3>Mobile Integrated</h3>
-                    <h5>Introducing our first operateable
+                <div className="desc " ref={hdesc3} 
+                onMouseEnter={() => { handleIn(hdesc3.current),handleDescIn(hid3.current)}} 
+                onMouseLeave={() =>{handleOut(hdesc3.current), handleDescOut(hid3.current)}}>
+                    <h3 className="x">Mobile Integrated</h3>
+                    <h5 ref={hid3} className="x">Introducing our first operateable
                         mobile application availlable on playstore 
                     </h5>
                 </div>
