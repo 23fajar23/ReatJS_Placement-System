@@ -1,12 +1,13 @@
 .xcntr{
-    background-color: #efeff0;
     height: 80vh;
-    width: 100%;    
+    width: 100%;
 }
 .cx{
-    margin: 5px;
+    background-color: #0178df;
+    margin-left: 20px;
     width: 100%;
     height: 100%;
+    border-radius: 20px;
 }
 .insdx{
     padding: 20px;  
