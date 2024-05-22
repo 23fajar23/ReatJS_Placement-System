@@ -13,6 +13,7 @@
     display: flex;
     padding-left: 50px;
     justify-content: start;
+    backdrop-filter: blur(2px);
 }
 
 
