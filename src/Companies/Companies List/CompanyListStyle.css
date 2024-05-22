@@ -1,0 +1,14 @@
+li{
+    background-color: greenyellow;
+    width: 45vw;
+    display: flex;
+    justify-content: space-around;
+}
+ul{
+    background-color: blue;
+}
+
+.insd{
+    position: static;
+    justify-content: center;
+}

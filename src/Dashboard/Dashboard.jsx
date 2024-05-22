@@ -10,7 +10,7 @@ export const Dashboard = () => {
     return (
         <>
         <div className="cntr p-5">
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between upx">
                 <img src={pic} style={{height:50,width:50}}/>
                 <NavBar/>
             </div>

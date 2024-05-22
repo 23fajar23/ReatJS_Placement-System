@@ -7,51 +7,68 @@ gsap.registerPlugin(ScrollTrigger)
 
 export const ImageReveal = () => {
     const h1 = useRef(null)
-    const h2 = useRef(null)
-    const h3 = useRef(null)
-    const h4 = useRef(null)
+    const hdesc1 = useRef(null)
+    const hdesc2 = useRef(null)
+    const hdesc3 = useRef(null)
+    const elements = [hdesc1,hdesc2,hdesc3];
 
     useEffect(() => {
-        const elements = [h1,h2,h3,h4];
-
-            elements.forEach((ref) => {
-                    gsap.fromTo(ref.current, {
+                gsap.fromTo(h1.current, {
                         opacity : 0,
                         y : 20
-                    },{
-                        opacity: 1,
-                    y: 0,
-                    duration: 0.8,
+                },{
+                    opacity: 1,
+                y: 0,
+                duration: 0.8,
                     scrollTrigger: {
-                    trigger: ref.current,
-                    start: "top 80%",
-                    end: "top 0%",
-                    toggleActions: "play none none none "
-                    }
-                    })
-            })
-    },[])
+                trigger: h1.current,
+                start: "top 80%",
+                end: "top 0%",
+                 toggleActions: "play none none none "
+                }
+                })
+    },[scroll])
 
-   
+    const handleIn = (element) => {
+        gsap.to(element, {
+            y: -20,
+            boxShadow: "0px 10px 8px rgba(0, 0, 0, 0.20)",
+        });
+    };
+
+    const handleOut = (element) => {
+        gsap.to(element, {
+            y: 0,
+            boxShadow: "0px 0px 0px rgba(0, 0, 0, 0)",
+        });
+    };
 
     return (
-        <div className="image-container">
-        <img ref={h1} 
-        id="imgx" width={"100%"} 
-        src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        className="images"/>
-        <img ref={h2} 
-        id="imgx" width={"100%"} 
-        src="https://images.unsplash.com/photo-1715646527387-2fb6667132fc?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        className="images"/>
-        <img ref={h3} 
-        id="imgx" width={"100%"} 
-        src="https://images.unsplash.com/photo-1715077856082-41cfafddbbed?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        className="images"/>
-        <img ref={h4}   
-        id="imgx" width={"100%"} 
-        src="https://images.unsplash.com/photo-1715145036637-ffa5d164e195?q=80&w=1895&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        className="images"/>
+        <div className="image-container" ref={h1}>
+            <div className="images i1">
+                <div className="desc " ref={hdesc1} onMouseEnter={() => { handleIn(hdesc1.current)}} onMouseLeave={() =>{handleOut(hdesc1.current)}}>
+                    <h3>Work with your clients</h3>
+                    <h5>GetSpot will help you manage numerous 
+                        clients you have in a single click </h5>
+                </div>
+            </div>
+            <div className="images i2">
+                <div className="desc " ref={hdesc2} onMouseEnter={() => { handleIn(hdesc2.current)}} onMouseLeave={() =>{handleOut(hdesc2.current)}}>
+                    <h3>Manage your trainees</h3>
+                    <h5>GetSpot designed to help you manage
+                        and help trainee get onboard fast 
+                    </h5>
+                </div>
+            </div>
+            <div className="images i3">
+                <div className="desc " ref={hdesc3} onMouseEnter={() => { handleIn(hdesc3.current)}} onMouseLeave={() =>{handleOut(hdesc3.current)}}>
+                    <h3>Mobile Integrated</h3>
+                    <h5>Introducing our first operateable
+                        mobile application availlable on playstore 
+                    </h5>
+                </div>
+            </div>
+            
         </div>
     )
 }
