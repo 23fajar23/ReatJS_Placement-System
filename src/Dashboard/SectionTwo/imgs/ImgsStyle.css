@@ -15,6 +15,8 @@
 .x{
     position: sticky;
     text-align: center;
+    font-weight: 500;
+    
 }
 .desc{
     padding-top: 10px;

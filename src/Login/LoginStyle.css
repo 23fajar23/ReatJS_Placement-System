@@ -4,7 +4,17 @@
     background-position: center;
     width:100vw;
     height: 100vh;
+    display: flex;
+    padding-left: 50px;
+    justify-content: start;
 }
+
+.overlaySetting{
+    display: flex;
+    padding-left: 50px;
+    justify-content: start;
+}
+
 
 .Title{
     font-size: 85px;

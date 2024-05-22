@@ -23,7 +23,7 @@ export const ImageReveal = () => {
                 },{
                     opacity: 1,
                 y: 0,
-                duration: 0.8,
+                duration: 1,
                 scrollTrigger: {
                 trigger: h1.current,
                 start: "top 80%",
@@ -84,8 +84,8 @@ export const ImageReveal = () => {
                 <div className="desc " ref={hdesc1} 
                 onMouseEnter={() => { handleIn(hdesc1.current),handleDescIn(hid1.current)}} 
                 onMouseLeave={() =>{handleOut(hdesc1.current),handleDescOut(hid1.current)}}>
-                    <h3 className="x">Work with your clients</h3>
-                    <h5 ref={hid1} className="x">GetSpot will help you manage numerous 
+                    <h1 className="x" style={{fontFamily:"Archivo, sans-serif"}}>Work with your clients</h1>
+                    <h5 ref={hid1} className="x" style={{fontFamily:"Archivo, sans-serif"}}>GetSpot will help you manage numerous 
                         clients you have in a single click </h5>
                 </div>
             </div>
@@ -93,8 +93,8 @@ export const ImageReveal = () => {
                 <div className="desc " ref={hdesc2} 
                 onMouseEnter={() => { handleIn(hdesc2.current), handleDescIn(hid2.current)}} 
                 onMouseLeave={() =>{handleOut(hdesc2.current), handleDescOut(hid2.current)}}>
-                    <h3 className="x">Manage your trainees</h3>
-                    <h5 ref={hid2} className="x">GetSpot designed to help you manage
+                    <h1 className="x" style={{fontFamily:"Archivo, sans-serif"}}>Manage your trainees</h1>
+                    <h5 ref={hid2} className="x" style={{fontFamily:"Archivo, sans-serif"}}>GetSpot designed to help you manage
                         and help trainee get onboard fast 
                     </h5>
                 </div>
@@ -103,8 +103,8 @@ export const ImageReveal = () => {
                 <div className="desc " ref={hdesc3} 
                 onMouseEnter={() => { handleIn(hdesc3.current),handleDescIn(hid3.current)}} 
                 onMouseLeave={() =>{handleOut(hdesc3.current), handleDescOut(hid3.current)}}>
-                    <h3 className="x">Mobile Integrated</h3>
-                    <h5 ref={hid3} className="x">Introducing our first operateable
+                    <h1 className="x" style={{fontFamily:"Archivo, sans-serif"}}>Mobile Integrated</h1>
+                    <h5 ref={hid3} className="x" style={{fontFamily:"Archivo, sans-serif"}}>Introducing our first operateable
                         mobile application availlable on playstore 
                     </h5>
                 </div>
