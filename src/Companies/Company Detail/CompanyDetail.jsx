@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ModalComp } from "./ModalComp";
 
 export const CompanyDetail = () => {
-    const [openModal,setOpenModal] = useState(true);
+    const [openModal,setOpenModal] = useState(false);
     return(
         <div className="cx mt-5">
         <div className="container xcntr">
@@ -17,11 +17,12 @@ export const CompanyDetail = () => {
                         backgroundColor: "transparent",
                         color: "white"
                     }}
+                    onClick={() => { setOpenModal(true)}}
                     >
                         <IconEdit/>
                     </button>
 
-                    <ModalComp open={openModal}/>
+                    <ModalComp open={openModal} onClose={() => setOpenModal(false)}/>
 
                 </div>
                 <h6>Company address</h6>

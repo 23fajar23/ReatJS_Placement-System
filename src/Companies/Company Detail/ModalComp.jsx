@@ -1,5 +1,5 @@
 import "../Company Detail/ModalStyle.css";
-export const ModalComp = ({open}) => {
+export const ModalComp = ({open,onClose}) => {
     if(!open) return null
    
     return(
@@ -54,12 +54,10 @@ export const ModalComp = ({open}) => {
 
                             <div className="mt-3 d-flex gap-2 justify-content-end">
                                 <button className="confirmed-button text-white bg-success"
-                                onMouseEnter={() => {handleGlow(bxn1)}} 
-                                onMouseLeave={() => {handleOff(bxn1)}}
+                                onClick={onClose}
                                 >submit</button>
                                 <button className="confirmed-button text-white bg-danger"
-                                onMouseEnter={() => {handleGlow(bxn2)}} 
-                                onMouseLeave={() => {handleOff(bxn2)}}
+                                onClick={onClose}
                                 >cancel</button>
                             </div>
                         </div>
