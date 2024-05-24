@@ -1,7 +1,7 @@
 li{
     background:linear-gradient(to right, #00bfff,#006ece);
-    width: 45vw;
-    height: 50px;
+    width: 50vw;
+    height: 8vh;
     display: flex;
     justify-content: space-around;
     margin-top: 5px;

@@ -1,0 +1,20 @@
+.batch-slide{
+    background: linear-gradient(to bottom, #00bfff, #0026ff);
+    /* background-color:#00bfff; */
+    height:78vh;
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width:25%;
+    color: white;
+}
+
+.fx{
+    font-family: "Archivo, sans-serif";
+}
+.batch-container{
+    width: 100%;
+    margin-left:50px;
+    margin-top:20px;
+}
