@@ -32,7 +32,8 @@ export const Bar = () => {
             x:10,
             color:"white",
             backgroundColor:"#00bfff",
-            boxShadow: "0px 6px 8px rgba(0, 0, 0, 0.15)"
+            boxShadow: "0px 6px 8px rgba(0, 0, 0, 0.15)",
+            duration:0.3
         })
     }
 
@@ -41,7 +42,8 @@ export const Bar = () => {
             x:0,
             color:"#00bfff",
             backgroundColor:"white",
-            boxShadow: "0px 0px 0px rgba(0, 0, 0, 0)"
+            boxShadow: "0px 0px 0px rgba(0, 0, 0, 0)",
+            duration:0.3
         })
     }
     return (
@@ -66,6 +68,9 @@ export const Bar = () => {
                 </li>
                 <li className="batch-slide">
                     <span>Batch 5</span>
+                </li>
+                <li className="batch-slide">
+                    <span>Batch 6</span>
                 </li>
             </ul>
         </div>

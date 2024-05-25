@@ -10,7 +10,8 @@ function App() {
       {/* <Login/> */}
       {/* <Dashboard/> */}
       {/* <Companies/> */}
-      <Batch/>
+      {/* <Batch/> */}
+      
     </>
   )
 }
