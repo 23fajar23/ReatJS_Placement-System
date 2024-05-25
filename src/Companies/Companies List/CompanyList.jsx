@@ -55,7 +55,7 @@ export const CompanyList = () => {
                 </div>
                 <div className="scrl my-5">
                         <ul className="mx-2">
-                            <li>
+                            <li className="comp-list">
                                 <div className="insd">                           
                                 <span className="cname">BCA Digital</span>
                                 </div>
@@ -69,7 +69,7 @@ export const CompanyList = () => {
                                 <span className="email">(+62)08123456789</span>
                                 </div>   
                             </li>
-                            <li>
+                            <li className="comp-list">
                                 <div className="insd">                           
                                 <span className="cname">BCA Digital</span>
                                 </div>
@@ -83,7 +83,7 @@ export const CompanyList = () => {
                                 <span className="email">(+62)08123456789</span>
                                 </div>   
                             </li>
-                            <li>
+                            <li className="comp-list">
                                 <div className="insd">                           
                                 <span className="cname">BCA Digital</span>
                                 </div>
@@ -97,7 +97,7 @@ export const CompanyList = () => {
                                 <span className="email">(+62)08123456789</span>
                                 </div>   
                             </li>
-                            <li>
+                            <li className="comp-list">
                                 <div className="insd">                           
                                 <span className="cname">BCA Digital</span>
                                 </div>
@@ -111,7 +111,7 @@ export const CompanyList = () => {
                                 <span className="email">(+62)08123456789</span>
                                 </div>   
                             </li>
-                            <li>
+                            <li className="comp-list">
                                 <div className="insd">                           
                                 <span className="cname">BCA Digital</span>
                                 </div>
@@ -125,7 +125,7 @@ export const CompanyList = () => {
                                 <span className="email">(+62)08123456789</span>
                                 </div>   
                             </li>
-                            <li>
+                            <li className="comp-list">
                                 <div className="insd">                           
                                 <span className="cname">BCA Digital</span>
                                 </div>
@@ -139,7 +139,35 @@ export const CompanyList = () => {
                                 <span className="email">(+62)08123456789</span>
                                 </div>   
                             </li>
-                            <li>
+                            <li className="comp-list">
+                                <div className="insd">                           
+                                <span className="cname">BCA Digital</span>
+                                </div>
+                                <div className="insd">
+                                <span className="loc">Jakarta</span>
+                                </div>
+                                <div className="insd">
+                                <span className="email">luis@gmail.com</span>
+                                </div>
+                                <div className="insd me-3">
+                                <span className="email">(+62)08123456789</span>
+                                </div>   
+                            </li>
+                            <li className="comp-list">
+                                <div className="insd">                           
+                                <span className="cname">BCA Digital</span>
+                                </div>
+                                <div className="insd">
+                                <span className="loc">Jakarta</span>
+                                </div>
+                                <div className="insd">
+                                <span className="email">luis@gmail.com</span>
+                                </div>
+                                <div className="insd me-3">
+                                <span className="email">(+62)08123456789</span>
+                                </div>   
+                            </li>
+                            <li className="comp-list">
                                 <div className="insd">                           
                                 <span className="cname">BCA Digital</span>
                                 </div>
