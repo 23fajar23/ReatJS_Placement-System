@@ -2,10 +2,10 @@
   height: 280px;
   width: 280px;
   overflow: hidden;
-  background-color: #1c6de7;
   border-radius: 50%;
   display: inline-block;
   margin-bottom: 20px;
+  border: solid black 1px;
 }
 
 #avatar{
@@ -18,7 +18,7 @@
 #user-container{
   height: auto;
   padding: 20px;
-  border: solid #bbb 1px;
+  border: solid #000000 1px;
   border-radius: 20px;
 }
 

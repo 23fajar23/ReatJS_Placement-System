@@ -12,7 +12,7 @@ export const User = () => {
             usrbtn2.current,
             usrbtn3.current
         ],{
-            border: "solid #bbb 1px",
+            border: "solid #000000 1px",
             backgroundColor:"white",
         })
     },[])
@@ -21,6 +21,7 @@ export const User = () => {
         gsap.to(elm,{
             height:"10vh",
             background:"linear-gradient(to right, #00bfff, #1c6de7)",
+            border: "solid #000000 1px",
             color:"white",
             duration:0.3
         })
@@ -30,7 +31,6 @@ export const User = () => {
         gsap.to(elm,{
             height:"6vh",
             background:"white",
-            border: "solid #bbb 1px",
             color:"black",
             duration:0.3
         })

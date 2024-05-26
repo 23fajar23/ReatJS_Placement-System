@@ -2,6 +2,7 @@ import { Batch } from './Batch/Batch'
 import { Companies } from './Companies/Companies'
 import { Dashboard } from './Dashboard/Dashboard'
 import { Login } from './Login/Login'
+import { Trainees } from './Trainee/Trainees'
 import { UserSettings } from './User Settings/UserSettings'
 
 function App() {
@@ -11,8 +12,9 @@ function App() {
       {/* <Login/> */}
       {/* <Dashboard/> */}
       {/* <Companies/> */}
-      <Batch/>
+      {/* <Batch/> */}
       {/* <UserSettings/> */}
+      <Trainees/>
     </div>
   )
 }
