@@ -42,14 +42,47 @@ export const ModalComp = ({open,onClose}) => {
                             </div>
 
                             <div className="d-flex flex-column mt-1">
-                                <label>enter the new status</label>
+                                <label>enter the new email</label>
                                 <input className="mdl-input"
                                 style={{
                                     borderStyle:"solid",
                                     borderWidth:1,
                                     borderColor: "#bebebe"
                                 }}
-                                placeholder="status"></input>
+                                placeholder="email"></input>
+                            </div>
+
+                            <div className="d-flex flex-column mt-1">
+                                <label>enter the new batch</label>
+                                <input className="mdl-input"
+                                style={{
+                                    borderStyle:"solid",
+                                    borderWidth:1,
+                                    borderColor: "#bebebe"
+                                }}
+                                placeholder="batch"></input>
+                            </div>
+
+                            <div className="d-flex flex-column mt-1">
+                                <label>enter the new expertise</label>
+                                <input className="mdl-input"
+                                style={{
+                                    borderStyle:"solid",
+                                    borderWidth:1,
+                                    borderColor: "#bebebe"
+                                }}
+                                placeholder="expertise"></input>
+                            </div>
+
+                            <div className="d-flex flex-column mt-1">
+                                <label>enter the new stacks</label>
+                                <input className="mdl-input"
+                                style={{
+                                    borderStyle:"solid",
+                                    borderWidth:1,
+                                    borderColor: "#bebebe"
+                                }}
+                                placeholder="stack"></input>
                             </div>
 
                             <div className="mt-3 d-flex gap-2 justify-content-end">

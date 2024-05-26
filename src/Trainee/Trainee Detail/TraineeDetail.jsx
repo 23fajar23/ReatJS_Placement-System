@@ -10,7 +10,7 @@ export const TraineeDetail = () => {
         <div className="container xcntr">
             <div className="insdx gap-5 text-white">
                 <div className="d-flex justify-content-between">
-                    <h1>Trainee Name</h1>
+                    <h1>Trainee Name :<br/> Matthew Diamonda</h1>
                     <button style={{
                         border:1,
                         width:45,
@@ -25,9 +25,15 @@ export const TraineeDetail = () => {
                     <ModalComp open={openModal} onClose={() => setOpenModal(false)}/>
 
                 </div>
-                <h6>Trainee address</h6>
-                <h6>Trainee phone number</h6>
-                <h6>Trainee status</h6>
+                <ul className="d-flex gap-2 flex-column">
+                    <li>Jl. Topaz no 7 , Malang</li>
+                    <li>081234567890</li>
+                    <li>ozzz@gmail.com</li>
+                    <li>batch 2 malang</li>
+                    <li>Front-End(FE)</li>
+                    <li>BE,FE,Mobile</li>
+                </ul>
+                
             </div>
         </div>
         </div>
