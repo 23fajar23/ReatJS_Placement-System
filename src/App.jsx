@@ -11,10 +11,10 @@ function App() {
     <div style={{fontFamily:"Archivo, sans-serif"}}>
       {/* <Login/> */}
       {/* <Dashboard/> */}
-      {/* <Companies/> */}
+      <Companies/>
       {/* <Batch/> */}
       {/* <UserSettings/> */}
-      <Trainees/>
+      {/* <Trainees/> */}
     </div>
   )
 }
