@@ -19,7 +19,7 @@ export const User = () => {
 
     const risedBtn = (elm) => {
         gsap.to(elm,{
-            height:"8vh",
+            height:"10vh",
             background:"linear-gradient(to right, #00bfff, #1c6de7)",
             color:"white",
             duration:0.3

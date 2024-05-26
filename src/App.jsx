@@ -11,8 +11,8 @@ function App() {
       {/* <Login/> */}
       {/* <Dashboard/> */}
       {/* <Companies/> */}
-      {/* <Batch/> */}
-      <UserSettings/>
+      <Batch/>
+      {/* <UserSettings/> */}
     </div>
   )
 }
