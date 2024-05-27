@@ -2,15 +2,16 @@
     padding: 5px;
     background-color:#00bfff;
     /* background-image: linear-gradient(to right,#00bfff, #66d8ff, #99e5ff); */
-    color: white;
-    width: 550px;
-    height: 35px;
+    color: rgb(255, 255, 255);
+    width: 580px;
+    height: 40px;
     outline: 0;
     
 }
 
 .icn {
-    width: 23px;
-    height: 23px;
+    width: 30px;
+    height: 30px;
     outline: 0;
+    padding: 3px;
 }
