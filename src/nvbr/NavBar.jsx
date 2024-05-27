@@ -11,17 +11,17 @@ export const NavBar = () => {
     const onHover = (index) => {
         gsap.to(iconsRefs.current[index],{
             backgroundColor:"#4cd2ff",
-            duration: 0.5,
+            duration: 0.2,
             borderRadius:5,
-            width:80
+            paddingRight:"10px",
         })
         setIndicator(index);
     }
     const offHover = (index) => {
         gsap.to(iconsRefs.current[index],{
             backgroundColor:"#00bfff",
-            duration: 0.3,
-            width:"auto"
+            duration: 0.2,
+            paddingRight:0,
         })
         setIndicator(null);
     }
@@ -38,7 +38,7 @@ export const NavBar = () => {
    
 
     const icons = [
-        <><IconBrandTeams className="icn"/> <p>{indicator === 0 && labels[0]}</p></>,
+        <><IconBrandTeams className="icn"/> <span>{indicator === 0 && labels[0]}</span></>,
         <><IconMessage className="icn"/> <span>{indicator === 1 && labels[1]}</span></>,
         <><IconBuildingSkyscraper className="icn"/> <span>{indicator === 2 && labels[2]}</span></>,
         <Link to="/batch" style={{textDecoration:"none", color:"white"}}><IconUsersGroup className="icn"/> <span>{indicator === 3 && labels[3]}</span></Link>,

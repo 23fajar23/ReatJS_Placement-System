@@ -34,6 +34,8 @@ export const Login = () => {
                 console.log(token);
                 localStorage.setItem('token',token);
                 localStorage.setItem('roles',res.data.role);
+                localStorage.setItem('email',email);
+                localStorage.setItem('password',password)
                 navigate("/");
             }
         } catch (err) {

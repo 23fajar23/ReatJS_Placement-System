@@ -3,9 +3,10 @@
   width: 280px;
   overflow: hidden;
   border-radius: 50%;
-  display: inline-block;
+  display: flex;
   margin-bottom: 20px;
   border: solid black 1px;
+  align-content: center;
 }
 
 #avatar{
@@ -20,11 +21,14 @@
   padding: 20px;
   border: solid #000000 1px;
   border-radius: 20px;
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
 }
 
 #option-user{
   border-radius: 8px;
   height: 6vh;
-  width: 20vw;
+  width: 100%;
   font-size: larger;
 }
