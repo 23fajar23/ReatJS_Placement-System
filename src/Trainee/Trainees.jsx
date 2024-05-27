@@ -1,6 +1,6 @@
 import { NavBar } from "../nvbr/NavBar"
 import pic from "../assets/logo.png";
-import "../Trainee/TraineesStyle.css";
+import "./TraineesStyle.css";
 import { TraineeList } from "./Trainee List/TraineeList";
 import { TraineeDetail } from "./Trainee Detail/TraineeDetail";
 

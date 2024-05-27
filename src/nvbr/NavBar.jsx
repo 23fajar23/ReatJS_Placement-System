@@ -2,6 +2,7 @@ import { IconBrandTeams, IconBuildingSkyscraper, IconHome, IconIdBadge2, IconMes
 import "../nvbr/Nvb.css";
 import { useRef, useState } from "react";
 import gsap from "gsap";
+import { Link,Outlet } from "react-router-dom";
 
 export const NavBar = () => {
     const iconsRefs = useRef([])

@@ -5,32 +5,38 @@ import AuthService from "../Service/AuthService.js";
 import { Dashboard } from "../Dashboard/Dashboard";
 import { useNavigate } from "react-router-dom";
 
+const authService = new AuthService();
+
 export const Login = () => {
 
     const btnRef = useRef(null);
-    const navigate = useNavigate;
-    const authService = AuthService();
-    const onSubmit = async (data) => {
-        console.log("test1");
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+
+
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        console.log("success");
+        const data = {email,password};
         try{
             const res = await authService.login(data);
             console.log(res);
-            useEffect(()=>{
-                if(sessionStorage.getItem("token") !== null){
-                    if(authService.validateToken()){
-                        return (
-                            <>
-                                <Dashboard/>
-                            </>
-                        )
-                    }
-                }
-            },[authService,navigate]);
+            // useEffect(()=>{
+            //     if(sessionStorage.getItem("token") !== null){
+            //         if(authService.validateToken()){
+            //             return (
+            //                 <>
+            //                     <Dashboard/>
+            //                 </>
+            //             )
+            //         }
+            //     }
+            // },[authService,navigate]);
             if(res){
-                const token = res.data.data.token;
+                const token = res.data.token;
+                console.log(token);
                 localStorage.setItem('token',token);
-                localStorage.setItem('roles',res.data.data.role);
-                navigate("/")
+                localStorage.setItem('roles',res.data.role);
             }
         } catch (err) {
             console.log(err);
@@ -47,7 +53,7 @@ export const Login = () => {
                 )
             }
         }
-    },[AuthService,navigate]);
+    },[AuthService]);
 
     const positionHandlerIn = () => {
             gsap.to(btnRef.current, {
@@ -79,9 +85,9 @@ export const Login = () => {
                             Login Page</h1>
                         </div>
                         <div>
-                            <input type={"email"} className="uname register" placeholder="Username" 
+                            <input type={"email"} className="uname register" placeholder="Username" value={email} onChange={(e) => setEmail(e.target.value)}
                             />
-                            <input type={"password"} className="pwd register" placeholder="Password"
+                            <input type={"password"} className="pwd register" placeholder="Password" value={password} onChange={(p) => setPassword(p.target.value)}
                             />
                         </div>
                         <div className="d-flex gap-5 mt-3">
