@@ -2,3 +2,21 @@
     padding-left:10px ;
     padding-right:10px ;
 }
+
+#btn-go-trd{
+    margin-top: 38px;
+    margin-left: 25px;
+    border-radius: 20px;
+    min-width: 130px;
+    height: 80vh;
+    border: 0;
+    color: white;
+    background:linear-gradient(to right,#0178df,#0178df);
+    transition: background-color 0.3s , min-width 0.3s ease;
+    outline: 0;
+}
+
+#btn-go-trd:hover{
+    background:linear-gradient(to right,#0178df,#00bfff);
+    min-width: 180px;
+}

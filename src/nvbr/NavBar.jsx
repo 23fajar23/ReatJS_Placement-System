@@ -40,7 +40,7 @@ export const NavBar = () => {
     const icons = [
         <><IconBrandTeams className="icn"/> <span>{indicator === 0 && labels[0]}</span></>,
         <><IconMessage className="icn"/> <span>{indicator === 1 && labels[1]}</span></>,
-        <><IconBuildingSkyscraper className="icn"/> <span>{indicator === 2 && labels[2]}</span></>,
+        <Link to="/companies" style={{textDecoration:"none", color:"white"}}><IconBuildingSkyscraper className="icn"/> <span>{indicator === 2 && labels[2]}</span></Link>,
         <Link to="/batch" style={{textDecoration:"none", color:"white"}}><IconUsersGroup className="icn"/> <span>{indicator === 3 && labels[3]}</span></Link>,
         <Link to="/trainees" style={{textDecoration:"none", color:"white"}}><IconIdBadge2 className="icn"/> <span>{indicator === 4 && labels[4]}</span></Link>,
         <Link to="/" style={{textDecoration:"none", color:"white"}}><IconHome className="icn"/> <span>{indicator === 5 && labels[5]}</span></Link>,

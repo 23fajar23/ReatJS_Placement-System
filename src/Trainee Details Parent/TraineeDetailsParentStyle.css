@@ -1,0 +1,16 @@
+#btn-back-trd{
+    margin-top: 38px;
+    border-radius: 20px;
+    min-width: 130px;
+    height: 80vh;
+    border: 0;
+    color: white;
+    background:linear-gradient(to left,#00bfff,#00bfff);
+    transition: background-color 0.3s , min-width 0.3s ease;
+    outline: 0;
+}
+
+#btn-back-trd:hover{
+    background:linear-gradient(to left,#00bfff,#0178df);
+    min-width: 180px;
+}
