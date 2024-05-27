@@ -1,7 +1,7 @@
 import { IconEdit } from "@tabler/icons-react";
 import "./TraineeDetailStyle.css";
 import { useState } from "react";
-import { ModalComp } from "./ModalComp";
+import { ModalComp } from "../../Trainee Details Parent/Trainee Info/ModalTrainee";
 
 export const TraineeDetail = () => {
     const [openModal,setOpenModal] = useState(false);
@@ -11,19 +11,6 @@ export const TraineeDetail = () => {
             <div className="insdx gap-5 text-white">
                 <div className="d-flex justify-content-between">
                     <h1>Trainee Name :<br/> Matthew Diamonda</h1>
-                    <button style={{
-                        border:1,
-                        width:45,
-                        backgroundColor: "transparent",
-                        color: "white"
-                    }}
-                    onClick={() => { setOpenModal(true)}}
-                    >
-                        <IconEdit/>
-                    </button>
-
-                    <ModalComp open={openModal} onClose={() => setOpenModal(false)}/>
-
                 </div>
                 <ul className="d-flex gap-2 flex-column">
                     <li>Jl. Topaz no 7 , Malang</li>

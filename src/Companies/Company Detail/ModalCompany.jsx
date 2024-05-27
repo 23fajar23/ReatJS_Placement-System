@@ -1,4 +1,5 @@
-import "./ModalStyle.css";
+import "../Company Detail/ModalCompanyStyle.css";
+
 export const ModalComp = ({open,onClose}) => {
     if(!open) return null
    
@@ -42,47 +43,14 @@ export const ModalComp = ({open,onClose}) => {
                             </div>
 
                             <div className="d-flex flex-column mt-1">
-                                <label>enter the new email</label>
+                                <label>enter the new status</label>
                                 <input className="mdl-input"
                                 style={{
                                     borderStyle:"solid",
                                     borderWidth:1,
                                     borderColor: "#bebebe"
                                 }}
-                                placeholder="email"></input>
-                            </div>
-
-                            <div className="d-flex flex-column mt-1">
-                                <label>enter the new batch</label>
-                                <input className="mdl-input"
-                                style={{
-                                    borderStyle:"solid",
-                                    borderWidth:1,
-                                    borderColor: "#bebebe"
-                                }}
-                                placeholder="batch"></input>
-                            </div>
-
-                            <div className="d-flex flex-column mt-1">
-                                <label>enter the new expertise</label>
-                                <input className="mdl-input"
-                                style={{
-                                    borderStyle:"solid",
-                                    borderWidth:1,
-                                    borderColor: "#bebebe"
-                                }}
-                                placeholder="expertise"></input>
-                            </div>
-
-                            <div className="d-flex flex-column mt-1">
-                                <label>enter the new stacks</label>
-                                <input className="mdl-input"
-                                style={{
-                                    borderStyle:"solid",
-                                    borderWidth:1,
-                                    borderColor: "#bebebe"
-                                }}
-                                placeholder="stack"></input>
+                                placeholder="status"></input>
                             </div>
 
                             <div className="mt-3 d-flex gap-2 justify-content-end">
