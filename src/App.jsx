@@ -11,12 +11,12 @@ function App() {
   return (
     <div style={{fontFamily:"Archivo, sans-serif"}}>
       {/* <Login/> */}
-      {/* <Dashboard/> */}
+      <Dashboard/>
       {/* <Companies/> */}
       {/* <Batch/> */}
       {/* <UserSettings/> */}
       {/* <Trainees/> */}
-      <TraineDetailsParent/>
+      {/* <TraineDetailsParent/> */}
     </div>
   )
 }
