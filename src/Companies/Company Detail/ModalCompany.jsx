@@ -8,7 +8,7 @@ export const ModalComp = ({open,onClose}) => {
             <div className="overlay">
                 <div className="modalContainer text-black p-4">
                     <h2>Please Insert the new desired information</h2>
-                        <div className="d-flex modal-input">
+                        <form className="d-flex modal-input">
                             <div className="d-flex flex-column mt-4">
                                 <label>enter the new name</label>
                                 <input className="mdl-input mt-1" 
@@ -61,7 +61,7 @@ export const ModalComp = ({open,onClose}) => {
                                 onClick={onClose}
                                 >cancel</button>
                             </div>
-                        </div>
+                        </form>
                 </div>
             </div>
         </>

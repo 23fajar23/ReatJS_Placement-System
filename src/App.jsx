@@ -7,11 +7,10 @@ import { Trainees } from './Trainee/Trainees'
 import { UserSettings } from './User Settings/UserSettings'
 
 function App() {
-
   return (
     <div style={{fontFamily:"Archivo, sans-serif"}}>
-      {/* <Login/> */}
-      <Dashboard/>
+      <Login/>
+      {/* <Dashboard/> */}
       {/* <Companies/> */}
       {/* <Batch/> */}
       {/* <UserSettings/> */}
@@ -21,4 +20,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
