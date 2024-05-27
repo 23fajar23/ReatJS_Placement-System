@@ -10,8 +10,15 @@
 
 #btn-test-stage {
     border: 0;
-    background-color: white;
+    background-color: #00bfff;
+    color: white;
     outline: 0;
-    border-radius: 5px;
-    padding: 5px;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 12px;
+    transition: background-color 0.3s;
+}
+
+#btn-test-stage:hover{
+    background-color: #4fd3ff;
 }

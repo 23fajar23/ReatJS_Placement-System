@@ -1,6 +1,8 @@
+import { useRef } from "react"
 import "../Stage Peek/StagePeek.css"
 
 export const StagePeek = () => {
+    
     return (
         <>
         <div className="sp-container">
