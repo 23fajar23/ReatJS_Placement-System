@@ -12,7 +12,16 @@ export const Login = () => {
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
     const navigate = useNavigate();
-
+    const inputField1 = useRef(null); 
+    const inputField2 = useRef(null); 
+    const [exr,setExr] = useState(false); 
+    
+    const redResponse = () => {
+        console.log("gsap triggered");
+        gsap.to([inputField1.current,inputField2.current],{
+            borderBottom:"solid 1px red"
+        })
+    }
     const onSubmit = async (event) => {
         event.preventDefault();
         const data = {email,password};
@@ -21,7 +30,6 @@ export const Login = () => {
             console.log(res);
             console.log('data: ',res.data);
             if(res){
-                alert('helo');
                 const token = res.data.token;
                 console.log(token);
                 localStorage.setItem('token',token);
@@ -30,6 +38,8 @@ export const Login = () => {
             }
         } catch (err) {
             console.log(err);
+            redResponse();
+            setExr(true);
         }
     }
 
@@ -59,6 +69,7 @@ export const Login = () => {
             })
     }
     
+    let readEr = "username or password not found";
 
     return (
         <>
@@ -70,10 +81,11 @@ export const Login = () => {
                             <h1 className="Title ">Welcome to GetSpot™<br/> 
                             Login Page</h1>
                         </div>
+                        <span style={{color:"red",fontSize:15, fontWeight:"bold"}}>{exr === true && readEr}</span>
                         <div>
-                            <input type={"email"} className="uname register" placeholder="Username" value={email} onChange={(e) => setEmail(e.target.value)}
+                            <input type={"email"} ref={inputField1} className="uname register" placeholder="Username" value={email} onChange={(e) => setEmail(e.target.value)}
                             />
-                            <input type={"password"} className="pwd register" placeholder="Password" value={password} onChange={(p) => setPassword(p.target.value)}
+                            <input type={"password"} ref={inputField2} className="pwd register" placeholder="Password" value={password} onChange={(p) => setPassword(p.target.value)}
                             />
                         </div>
                         <div className="d-flex gap-5 mt-3">

@@ -2,6 +2,7 @@ import { IconBrandTeams, IconBuildingSkyscraper, IconHome, IconIdBadge2, IconMes
 import "../nvbr/Nvb.css";
 import { useRef, useState } from "react";
 import gsap from "gsap";
+import { Link } from "react-router-dom";
 
 export const NavBar = () => {
     const iconsRefs = useRef([])
@@ -12,7 +13,7 @@ export const NavBar = () => {
             backgroundColor:"#4cd2ff",
             duration: 0.5,
             borderRadius:5,
-            width:100
+            width:80
         })
         setIndicator(index);
     }
@@ -26,24 +27,24 @@ export const NavBar = () => {
     }
 
     const labels = [
-        "bd team",
+        "team",
         "message",
-        "clients",
+        "client",
         "batch",
-        "trainees",
+        "trainee",
         "home",
-        "user settings"
+        "settings"
     ]
    
 
     const icons = [
-        <><IconBrandTeams className="icn"/> <span>{indicator === 0 && labels[0]}</span></>,
+        <><IconBrandTeams className="icn"/> <p>{indicator === 0 && labels[0]}</p></>,
         <><IconMessage className="icn"/> <span>{indicator === 1 && labels[1]}</span></>,
         <><IconBuildingSkyscraper className="icn"/> <span>{indicator === 2 && labels[2]}</span></>,
-        <><IconUsersGroup className="icn"/> <span>{indicator === 3 && labels[3]}</span></>,
-        <><IconIdBadge2 className="icn"/> <span>{indicator === 4 && labels[4]}</span></>,
-        <><IconHome className="icn"/> <span>{indicator === 5 && labels[5]}</span></>,
-        <><IconUser className="icn"/> <span>{indicator === 6 && labels[6]}</span></>
+        <Link to="/batch" style={{textDecoration:"none", color:"white"}}><IconUsersGroup className="icn"/> <span>{indicator === 3 && labels[3]}</span></Link>,
+        <Link to="/trainees" style={{textDecoration:"none", color:"white"}}><IconIdBadge2 className="icn"/> <span>{indicator === 4 && labels[4]}</span></Link>,
+        <Link to="/" style={{textDecoration:"none", color:"white"}}><IconHome className="icn"/> <span>{indicator === 5 && labels[5]}</span></Link>,
+        <Link to="/settings" style={{textDecoration:"none", color:"white"}}><IconUser className="icn"/> <span>{indicator === 6 && labels[6]}</span></Link>
     ]
 
     return (

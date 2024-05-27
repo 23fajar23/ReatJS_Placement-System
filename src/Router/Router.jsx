@@ -11,36 +11,30 @@ const Router = createBrowserRouter([
     {
         path:"/",
         element: <Dashboard/>,
-        children:[
-            {
-                path:"companies",
-                element:<Companies/>
-            },
-            {
-                path:"batch",
-                element:<Batch/>,
-                children:[
-                    {
-                        path:"trainees",
-                        element:<Trainees/>,
-                        children:[
-                            {
-                                path:"trainees-detail",
-                                element:<TraineDetailsParent/>
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                path:"settings",
-                element:<UserSettings/>
-            }
-        ]
     },
     {
         path:"/login",
         element:<Login/>
+    },
+    {
+        path:"companies",
+        element:<Companies/>
+    },
+    {
+        path:"batch",
+        element:<Batch/>,
+    },
+    {
+        path:"trainees",
+        element:<Trainees/>,
+    },
+    {
+        path:"trainees-detail",
+        element:<TraineDetailsParent/>
+    },
+    {
+        path:"settings",
+        element:<UserSettings/>
     }
 ])
 
