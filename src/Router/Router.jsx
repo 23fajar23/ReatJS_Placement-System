@@ -5,6 +5,7 @@ import { Batch } from "../Batch/Batch";
 import { Trainees } from "../Trainee/Trainees";
 import { TraineDetailsParent } from "../Trainee Details Parent/TraineeDetailsParent";
 import { UserSettings } from "../User Settings/UserSettings";
+import { Login } from "../Login/Login";
 
 const Router = createBrowserRouter([
     {
@@ -37,6 +38,10 @@ const Router = createBrowserRouter([
             }
         ]
     },
+    {
+        path:"/login",
+        element:<Login/>
+    }
 ])
 
 export default Router;

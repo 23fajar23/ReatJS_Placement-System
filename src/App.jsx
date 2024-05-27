@@ -4,7 +4,6 @@ function App() {
   return (
     <div style={{fontFamily:"Archivo, sans-serif"}}>
       <Login/>
-      
     </div>
   )
 }

@@ -2,41 +2,31 @@ import {useEffect, useRef, useState} from "react";
 import "../Login/LoginStyle.css" 
 import { gsap } from "gsap";
 import AuthService from "../Service/AuthService.js";
-import { Dashboard } from "../Dashboard/Dashboard";
 import { useNavigate } from "react-router-dom";
 
-const authService = new AuthService();
 
 export const Login = () => {
-
+    
+    const authService = AuthService();
     const btnRef = useRef(null);
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
-
+    const navigate = useNavigate();
 
     const onSubmit = async (event) => {
         event.preventDefault();
-        console.log("success");
         const data = {email,password};
         try{
             const res = await authService.login(data);
             console.log(res);
-            // useEffect(()=>{
-            //     if(sessionStorage.getItem("token") !== null){
-            //         if(authService.validateToken()){
-            //             return (
-            //                 <>
-            //                     <Dashboard/>
-            //                 </>
-            //             )
-            //         }
-            //     }
-            // },[authService,navigate]);
+            console.log('data: ',res.data);
             if(res){
+                alert('helo');
                 const token = res.data.token;
                 console.log(token);
                 localStorage.setItem('token',token);
                 localStorage.setItem('roles',res.data.role);
+                navigate("/");
             }
         } catch (err) {
             console.log(err);
@@ -46,14 +36,10 @@ export const Login = () => {
     useEffect(()=>{
         if(sessionStorage.getItem("token") !== null){
             if(authService.validateToken()){
-                return (
-                    <>
-                        <Dashboard/>
-                    </>
-                )
+                navigate("/");
             }
         }
-    },[AuthService]);
+    },[AuthService,navigate]);
 
     const positionHandlerIn = () => {
             gsap.to(btnRef.current, {
