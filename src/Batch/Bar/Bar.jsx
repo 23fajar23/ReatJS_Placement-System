@@ -1,7 +1,8 @@
 import { IconPlus, IconTrashFilled } from "@tabler/icons-react";
 import "../Bar/Bar.css";
-import { useRef,useEffect } from "react";
+import { useRef,useEffect,useState } from "react";
 import gsap from "gsap";
+import { ModalBatch } from "../ModalAdd/ModalBatch";
 
 import { ModalBatch } from "../ModalAdd/ModalBatch";
 import axios from "axios";
@@ -35,6 +36,7 @@ export const Bar = () => {
             console.log(err);
         }
     }
+
 
 
     useEffect(()=>{
@@ -76,6 +78,9 @@ export const Bar = () => {
             duration:0.3
         })
     }
+
+
+
     return (
         <>
         <div className="d-flex flex-column ms-5 justify-content-center gap-2">

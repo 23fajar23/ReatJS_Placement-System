@@ -1,6 +1,6 @@
 .comp-list{
     background:linear-gradient(to right, #00bfff,#006ece);
-    width: 50vw;
+    width: 45vw;
     height: 8vh;
     display: flex;
     justify-content: space-around;
@@ -15,7 +15,6 @@
     color: white;
     font-size: 15px;
     align-content: center;
-    
 }
 
 .scrl{
@@ -43,7 +42,7 @@
     background: #3ea5ff; 
 }
 .ssx{
-    flex-direction:column ;
+    flex-direction:column;
 }
 .search-set{
     margin-left: 30px;

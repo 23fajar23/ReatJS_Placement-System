@@ -16,7 +16,7 @@ export const Option = () => {
 
     const onHover = (el) => {
         gsap.to(el,{
-            width:"100%",
+            width:"80%",
             duration:0.3
         })
     }
@@ -31,24 +31,24 @@ export const Option = () => {
         <>
         <div className="d-flex flex-column mt-5 justify-content-center gap-5 ">
             <div>
-                <h2 className="loc-w" 
+                <h3 className="loc-w" 
                 onMouseEnter={() => { onHover(bar1.current)}}
                 onMouseLeave={() => { offHover(bar1.current)}}
-                >Jakarta</h2>
+                >Jakarta</h3>
                 <div className="bg-dark under-bar" style={{height:2}} ref={bar1}></div>
             </div>
             <div >
-                <h2 className="loc-w"
+                <h3 className="loc-w"
                 onMouseEnter={() => { onHover(bar2.current)}}
                 onMouseLeave={() => { offHover(bar2.current)}}
-                >Malang</h2>
+                >Malang</h3>
                 <div className="bg-dark under-bar" style={{height: 2}} ref={bar2}></div>
             </div>
             <div >
-                <h2 className="loc-w"
+                <h3 className="loc-w"
                 onMouseEnter={() => { onHover(bar3.current)}}
                 onMouseLeave={() => { offHover(bar3.current)}}
-                >Surabaya</h2>
+                >Surabaya</h3>
                 <div className="bg-dark under-bar" style={{height: 2}} ref={bar3}></div>
             </div>
         </div>
