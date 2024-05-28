@@ -1,12 +1,11 @@
 import axios from "axios";
 import { useState } from "react"
-import { Token } from "react-bootstrap-typeahead";
 
 export const ModalBatch = ({open,onClose}) => {
-    if(!open) return null
     const [bname,setbname] = useState('');
     const [bregion,setbregion] = useState('');
     const [bstatus,setstatus] = useState('');
+    if(!open) return null
     
     const handleSetNameChange = (e) => {
         setbname(e.target.value);
@@ -23,7 +22,7 @@ export const ModalBatch = ({open,onClose}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         try{
-            const token = localStorage.getItem('Token');
+            const token = localStorage.getItem('token');
             axios.post('http://10.10.102.254:8080/api/batch',{
                 name:bname,
                 region:bregion,

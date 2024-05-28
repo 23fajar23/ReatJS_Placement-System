@@ -15,7 +15,7 @@ export const Bar = () => {
         setname(bname);
     }
     const handleStatus = (bstatus) => {
-        setname(bstatus);
+        setstatus(bstatus);
     }
 
     useEffect(()=>{
@@ -73,7 +73,7 @@ export const Bar = () => {
                 </li>
             </ul>
         </div>
-        <ModalBatch name={name} status={status} open={openModal} onClose={() => {setOpenModal(false)}} />
+        <ModalBatch open={openModal} onClose={() => {setOpenModal(false)}} />
         </>
     )
 } 

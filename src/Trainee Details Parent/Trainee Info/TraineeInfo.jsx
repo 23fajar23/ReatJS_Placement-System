@@ -30,8 +30,7 @@ export const TraineeInfo = () => {
                     <li>081234567890</li>
                     <li>ozzz@gmail.com</li>
                     <li>batch 2 malang</li>
-                    <li>Front-End(FE)</li>
-                    <li>BE,FE,Mobile</li>
+                    <li>Education : -</li>
                 </ul>
                 
             </div>
