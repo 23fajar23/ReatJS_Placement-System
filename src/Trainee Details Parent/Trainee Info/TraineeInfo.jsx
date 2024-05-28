@@ -1,10 +1,35 @@
 import { IconEdit } from "@tabler/icons-react";
 import "../Trainee Info/TraineeInfo.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ModalComp } from "./ModalTrainee";
+import axios from "axios";
 
 export const TraineeInfo = () => {
     const [openModal,setOpenModal] = useState(false);
+    const [trainee,setTrainee] = useState([]);
+    
+    // const traineeDataInfoFetch = (e) => {
+    //     e.preventDefault();
+    //     try {
+    //         const token = localStorage.getItem('token');
+    //         const response = axios.get('http://api/customer/all',{
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //                 'Authorization': `Bearer ${token}`
+    //             }
+    //         })
+    //             setTrainee(response.data.data);
+    //             const fetchedTrainee = setTrainee(response.data.data);
+    //             const findTrainee = fetchedTrainee.find(x => { x === }) 
+    //     } catch (err){
+    //         console.log(err);
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     traineeDataInfoFetch
+    // })
+
     return(
         <div className="tinfo mt-5">
         <div className="container xcntr">

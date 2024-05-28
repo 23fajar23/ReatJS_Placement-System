@@ -1,18 +1,47 @@
 import { IconPlus, IconSearch, IconTrashFilled,  } from "@tabler/icons-react";
 import "./TraineeListStyle.css";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import axios from "axios";
+import { Loading } from "../../Loading/Loading";
 
 export const TraineeList = () => {
+
+        const [trainees,setTrainees] = useState([]);
+
         const btHv1 = useRef(null);
         const btHv2 = useRef(null);
         const btHv3 = useRef(null);
 
         useEffect(()=>{
+            fetchTrainee();
             setHandle(btHv1.current)
             setHandle(btHv2.current)
             setHandle(btHv3.current)
         },[])
+
+        const fetchTrainee = () => {
+            try {
+                const token = localStorage.getItem('token');
+                axios.get('http://10.10.102.254:8080/api/customer/all',{
+                    headers:{
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                .then(response => {
+                    setTrainees(response.data.data);
+                    console.log('trainees list :',trainees);
+                })
+                .catch(error => {
+                    console.log('error fetching -> ',error);
+                })
+            } catch (err) {
+                console.log(err);
+                console.log("Failed to fetch trainees");
+            }
+        }
+
         const setHandle = (element) => {
             gsap.set(element,{
                 backgroundColor : "white",
@@ -54,107 +83,25 @@ export const TraineeList = () => {
                     </div>
                 </div>
                 <div className="scrl my-5">
+                    {trainees.length === 0 ? (
+                        <>
+                            <Loading/>
+                        </>
+                    ) : (
+                        <>
                         <ul className="mx-2">
-                            <li className="comp-list">
-                                <div className="insd">                           
-                                <span className="cname">Ari sutejo narjo</span>
-                                </div>
-                                <div className="insd me-3">
-                                <span className="batch">Batch 3</span>
-                                </div> 
-                                <div className="insd me-3">
-                                <span className="loc">Jakarta</span>
-                                </div>
-                            </li>
-                            <li className="comp-list">
-                                <div className="insd">                           
-                                <span className="cname">Jarwo Sutrisna</span>
-                                </div>
-                                <div className="insd me-3">
-                                <span className="batch">Batch 2</span>
-                                </div> 
-                                <div className="insd me-3">
-                                <span className="loc">Malang</span>
-                                </div>
-                            </li>
-                            <li className="comp-list">
-                                <div className="insd">                           
-                                <span className="cname">Martin Garrix</span>
-                                </div>
-                                <div className="insd me-3">
-                                <span className="batch">Batch 12</span>
-                                </div> 
-                                <div className="insd me-3">
-                                <span className="loc">Surabaya</span>
-                                </div>
-                            </li>
-                            <li className="comp-list">
-                                <div className="insd">                           
-                                <span className="cname">Ari sutejo narjo</span>
-                                </div>
-                                <div className="insd me-3">
-                                <span className="batch">Batch 3</span>
-                                </div> 
-                                <div className="insd me-3">
-                                <span className="loc">Jakarta</span>
-                                </div>
-                            </li>
-                            <li className="comp-list">
-                                <div className="insd">                           
-                                <span className="cname">Jarwo Sutrisna</span>
-                                </div>
-                                <div className="insd me-3">
-                                <span className="batch">Batch 2</span>
-                                </div> 
-                                <div className="insd me-3">
-                                <span className="loc">Malang</span>
-                                </div>
-                            </li>
-                            <li className="comp-list">
-                                <div className="insd">                           
-                                <span className="cname">Martin Garrix</span>
-                                </div>
-                                <div className="insd me-3">
-                                <span className="batch">Batch 12</span>
-                                </div> 
-                                <div className="insd me-3">
-                                <span className="loc">Surabaya</span>
-                                </div>
-                            </li>
-                            <li className="comp-list">
-                                <div className="insd">                           
-                                <span className="cname">Ari sutejo narjo</span>
-                                </div>
-                                <div className="insd me-3">
-                                <span className="batch">Batch 3</span>
-                                </div> 
-                                <div className="insd me-3">
-                                <span className="loc">Jakarta</span>
-                                </div>
-                            </li>
-                            <li className="comp-list">
-                                <div className="insd">                           
-                                <span className="cname">Jarwo Sutrisna</span>
-                                </div>
-                                <div className="insd me-3">
-                                <span className="batch">Batch 2</span>
-                                </div> 
-                                <div className="insd me-3">
-                                <span className="loc">Malang</span>
-                                </div>
-                            </li>
-                            <li className="comp-list">
-                                <div className="insd">                           
-                                <span className="cname">Martin Garrix</span>
-                                </div>
-                                <div className="insd me-3">
-                                <span className="batch">Batch 12</span>
-                                </div> 
-                                <div className="insd me-3">
-                                <span className="loc">Surabaya</span>
-                                </div>
-                            </li>
+                            {trainees.map((...trainee) => (
+                                <li key={trainee.id} className="comp-list">
+                                    <div className="insd">   
+                                            <span className="cname">{trainee.name}</span>
+                                            <span className="batch">{trainee.batch}</span>
+                                            <span className="loc">{trainee.address}</span>
+                                    </div>
+                                </li>
+                            ))}
                         </ul>        
+                        </>
+                    ) }
                 </div>
             </div>
         )

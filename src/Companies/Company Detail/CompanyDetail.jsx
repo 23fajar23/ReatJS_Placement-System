@@ -6,28 +6,27 @@ import { ModalCompany } from "./ModalCompany";
 export const CompanyDetail = () => {
     const [openModal,setOpenModal] = useState(false);
     return(
-        <div className="cx mt-5">
+        <div className="cx mt-5" style={{fontFamily:'Archivo, sans-serif'}}>
         <div className="container xcntr">
             <div className="insdx gap-5 text-white">
                 <div className="d-flex justify-content-between">
-                    <h1>Company Name</h1>
+                    <h1 style={{fontSize:50}}>Company Name</h1>
                     <button style={{
-                        border:1,
-                        width:45,
+                        border:0,
+                        borderRadius:'10px',
                         backgroundColor: "transparent",
-                        color: "white"
+                        color: "white",
                     }}
                     onClick={() => { setOpenModal(true)}}
                     >
-                        <IconEdit/>
+                        <IconEdit size={30}/>
                     </button>
 
                     <ModalCompany open={openModal} onClose={() => setOpenModal(false)}/>
-
                 </div>
-                <h6>Company address</h6>
-                <h6>Company phone number</h6>
-                <h6>Company status</h6>
+                <div>
+                    
+                </div>
             </div>
         </div>
         </div>

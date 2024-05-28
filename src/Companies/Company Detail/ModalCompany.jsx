@@ -44,13 +44,12 @@ export const ModalCompany = ({open,onClose}) => {
 
                             <div className="d-flex flex-column mt-1">
                                 <label>enter the new status</label>
-                                <input className="mdl-input"
-                                style={{
-                                    borderStyle:"solid",
-                                    borderWidth:1,
-                                    borderColor: "#bebebe"
-                                }}
-                                placeholder="status"></input>
+                                <select id="modal-status-dropdown" 
+                                style={{padding:5, borderRadius:5}} >
+                                    <option value="">Please choose status</option>
+                                    <option value="ACTIVE">ACTIVE</option>
+                                    <option value="NOT_ACTIVE">NOT_ACTIVE</option>
+                                </select>
                             </div>
 
                             <div className="mt-3 d-flex gap-2 justify-content-end">
