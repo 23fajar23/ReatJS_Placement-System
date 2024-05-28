@@ -20,6 +20,9 @@ export const ModalBatch = ({open,onClose}) => {
     }
 
     const handleSubmit = (e) => {
+        console.log('bname:', bname);
+        console.log('bregion:', bregion);
+        console.log('bstatus:', bstatus);
         e.preventDefault();
         try{
             const token = localStorage.getItem('token');
@@ -34,11 +37,12 @@ export const ModalBatch = ({open,onClose}) => {
                 }
             })
             .then((response) => {
-                console.log(response.data);
+                console.log(response);
+                setbname("");
                 onClose();
             })
-            .catch((error) => {
-                console.log(error);
+            .catch((err) => {
+                console.log(err);
             })
         } catch (err){
             alert(err);
@@ -58,40 +62,34 @@ export const ModalBatch = ({open,onClose}) => {
                                 style={{
                                     borderStyle:"solid",
                                     borderWidth:1,
-                                    borderColor: "#bebebe"
+                                    borderColor: "black",
+                                    backgroundColor:'white'
                                 }}
                                 id="btname"
                                 value={bname}
-                                onChange={handleSetNameChange}
+                                onChange={handleSetNameChange}   
                                 placeholder="name"></input>
                             </div>
 
                             <div className="d-flex flex-column mt-1">
                                 <label>enter the new region</label>
-                                <input className="mdl-input"
-                                style={{
-                                    borderStyle:"solid",
-                                    borderWidth:1,
-                                    borderColor: "#bebebe"
-                                }}
-                                id="btregion"
-                                value={bregion}
-                                onChange={handleSetRegionChange}
-                                placeholder="address"></input>
+                                <select id="modal-status-dropdown" 
+                                style={{padding:5, borderRadius:5,borderWidth:1}} onChange={handleSetRegionChange}>
+                                    <option value="">Please choose region</option>
+                                    <option value="JAKARTA">JAKARTA</option>
+                                    <option value="MALANG">MALANG</option>
+                                    <option value="ONLINE">ONLINE</option>
+                                </select>
                             </div>
 
                             <div className="d-flex flex-column mt-1">
                                 <label>enter the new status</label>
-                                <input className="mdl-input" 
-                                style={{
-                                    borderStyle:"solid",
-                                    borderWidth:1,
-                                    borderColor: "#bebebe"
-                                }}
-                                id="btstatus"
-                                value={bstatus}
-                                onChange={handleSetStatusChange}
-                                placeholder="phone number"></input>
+                                <select id="modal-status-dropdown" 
+                                style={{padding:5, borderRadius:5}} onChange={handleSetStatusChange}>
+                                    <option value="">Please choose status</option>
+                                    <option value="ACTIVE">ACTIVE</option>
+                                    <option value="NOT_ACTIVE">NOT_ACTIVE</option>
+                                </select>
                             </div>
 
                             <div className="mt-3 d-flex gap-2 justify-content-end">

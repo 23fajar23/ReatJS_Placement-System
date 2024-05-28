@@ -22,6 +22,9 @@ export const ModalRemoveBatch = ({open,onClose}) => {
     }
 
     const handleSubmit = async (e) => {
+        console.log('bname',bname);
+        console.log('bregion',bregion);
+        console.log('bstatus',bstatus);
         e.preventDefault();
         try{
             const token = localStorage.getItem('token');
@@ -43,6 +46,7 @@ export const ModalRemoveBatch = ({open,onClose}) => {
                     }
                 })
                 console.log('deleted batch : ', batchToDelete);
+                setbname("");
                 onClose();
             } else {
                 console.log('batch not found');
@@ -86,15 +90,6 @@ export const ModalRemoveBatch = ({open,onClose}) => {
                                 </select>
                             </div>
 
-                            <div className="d-flex flex-column mt-1">
-                                <label>choose status </label>
-                                <select id="modal-status-dropdown" 
-                                style={{padding:5, borderRadius:5}}>
-                                    <option value="">Please choose status</option>
-                                    <option value={bstatus}>ACTIVE</option>
-                                    <option value={bstatus}>NOT_ACTIVE</option>
-                                </select>
-                            </div>
 
                             <div className="mt-3 d-flex gap-2 justify-content-end">
                                 <button className="confirmed-button text-white bg-success"
