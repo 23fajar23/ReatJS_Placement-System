@@ -16,6 +16,18 @@
     width: 25vw;
 }
 
+@media screen and (max-width: 1024px) {
+    .batch-slide {
+      width: 30vw;
+    }
+
+    .batch-slide:hover {
+     width: 35vw;
+    }
+}
+
+
+
 .fx{
     font-family: "Archivo, sans-serif";
 }

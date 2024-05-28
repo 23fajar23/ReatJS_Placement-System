@@ -5,10 +5,13 @@ import gsap from "gsap";
 import { ModalBatch } from "../ModalAdd/ModalBatch";
 import axios from "axios";
 import { ModalRemoveBatch } from "../ModalAdd/ModalRemoveBatch";
+import { ModalUpdateBatch } from "../ModalAdd/ModalUpdateBatch";
 
 export const Bar = () => {
     const [openModalCreate, setOpenModalCreate] = useState(false);
     const [openModalRemove, setOpenModalRemove] = useState(false);
+    const [openModalUpdate, setOpenModalUpdate] = useState(false);
+    const [selectedBatch, setSelectedBatch] = useState(null);
     const addBtn = useRef(null);
     const rmvBtn = useRef(null);
     const [batches, setBatches] = useState([]);
@@ -53,7 +56,7 @@ export const Bar = () => {
         })
 
         fetchBatch();
-    }, [!openModalRemove, !openModalCreate])
+    }, [!openModalRemove, !openModalCreate, !openModalUpdate])
 
     const inHvr = (element) => {
         gsap.to(element, {
@@ -75,6 +78,12 @@ export const Bar = () => {
         })
     }
 
+    const handleBatchClick = (batch) => {
+        setSelectedBatch(batch);
+        console.log(batch);
+        setOpenModalUpdate(true);
+    }
+
     return (
         <>
             <div className="d-flex flex-column ms-5 justify-content-center gap-2">
@@ -86,7 +95,17 @@ export const Bar = () => {
                     {batches
                         .filter(batch => batch.status !== 'NOT_ACTIVE')
                         .map((batch) => (
-                            <li key={batch.id} className="batch-slide d-flex gap-5">
+                            <li key={batch.id} className="batch-slide d-flex gap-5" onClick={() => handleBatchClick(batch)}>
+                                    <span>{batch.name}</span>
+                                    <span>{batch.status}</span>
+                                    <span>{batch.region}</span>
+                            </li>
+                        ))}
+
+                    {batches
+                        .filter(batch => batch.status === 'NOT_ACTIVE')
+                        .map((batch) => (
+                            <li key={batch.id} className="batch-slide d-flex gap-5" onClick={() => handleBatchClick(batch)}>
                                     <span>{batch.name}</span>
                                     <span>{batch.status}</span>
                                     <span>{batch.region}</span>
@@ -96,6 +115,7 @@ export const Bar = () => {
             </div>
             <ModalBatch open={openModalCreate} onClose={() => { setOpenModalCreate(false) }} />
             <ModalRemoveBatch open={openModalRemove} onClose={() => { setOpenModalRemove(false) }} />
+            <ModalUpdateBatch open={openModalUpdate} onClose={() => { setOpenModalUpdate(false) }} batchData={selectedBatch} />
         </>
     )
 }
