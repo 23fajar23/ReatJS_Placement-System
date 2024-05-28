@@ -54,10 +54,10 @@ export const ModalBatch = ({open,onClose}) => {
         <>
             <div className="overlay">
                 <div className="modalContainer text-black p-4" >
-                    <h2>Please Insert the new desired information</h2>
+                    <h2>New Batch +</h2>
                         <form className="d-flex modal-input" onSubmit={handleSubmit}>
                             <div className="d-flex flex-column mt-4">
-                                <label>enter the new batch name</label>
+                                <label>Batch Name :</label>
                                 <input className="mdl-input mt-1" 
                                 style={{
                                     borderStyle:"solid",
@@ -72,10 +72,10 @@ export const ModalBatch = ({open,onClose}) => {
                             </div>
 
                             <div className="d-flex flex-column mt-1">
-                                <label>enter the new region</label>
+                                <label>Area :</label>
                                 <select id="modal-status-dropdown" 
                                 style={{padding:5, borderRadius:5,borderWidth:1}} onChange={handleSetRegionChange}>
-                                    <option value="">Please choose region</option>
+                                    <option value="">-- Select Area --</option>
                                     <option value="JAKARTA">JAKARTA</option>
                                     <option value="MALANG">MALANG</option>
                                     <option value="ONLINE">ONLINE</option>
@@ -83,10 +83,10 @@ export const ModalBatch = ({open,onClose}) => {
                             </div>
 
                             <div className="d-flex flex-column mt-1">
-                                <label>enter the new status</label>
+                                <label>Status :</label>
                                 <select id="modal-status-dropdown" 
                                 style={{padding:5, borderRadius:5}} onChange={handleSetStatusChange}>
-                                    <option value="">Please choose status</option>
+                                    <option value="">-- Select Status --</option>
                                     <option value="ACTIVE">ACTIVE</option>
                                     <option value="NOT_ACTIVE">NOT_ACTIVE</option>
                                 </select>

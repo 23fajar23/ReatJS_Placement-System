@@ -114,7 +114,7 @@ export const Bar = () => {
                 </ul>
             </div>
             <ModalBatch open={openModalCreate} onClose={() => { setOpenModalCreate(false) }} />
-            <ModalRemoveBatch open={openModalRemove} onClose={() => { setOpenModalRemove(false) }} />
+            <ModalRemoveBatch open={openModalRemove} onClose={() => { setOpenModalRemove(false) }} batchData={batches}/>
             <ModalUpdateBatch open={openModalUpdate} onClose={() => { setOpenModalUpdate(false) }} batchData={selectedBatch} />
         </>
     )
