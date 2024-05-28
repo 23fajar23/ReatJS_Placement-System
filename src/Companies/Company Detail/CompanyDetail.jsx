@@ -1,7 +1,7 @@
 import { IconEdit, IconPencilBolt } from "@tabler/icons-react";
 import "../Company Detail/CompanyDetailStyle.css";
 import { useState } from "react";
-import { ModalComp } from "./ModalCompany";
+import { ModalCompany } from "./ModalCompany";
 
 export const CompanyDetail = () => {
     const [openModal,setOpenModal] = useState(false);
@@ -22,7 +22,7 @@ export const CompanyDetail = () => {
                         <IconEdit/>
                     </button>
 
-                    <ModalComp open={openModal} onClose={() => setOpenModal(false)}/>
+                    <ModalCompany open={openModal} onClose={() => setOpenModal(false)}/>
 
                 </div>
                 <h6>Company address</h6>
