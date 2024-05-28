@@ -23,11 +23,16 @@ export const ModalBatch = ({open,onClose}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         try{
+            const token = localStorage.getItem('Token');
             axios.post('http://10.10.102.254:8080/api/batch',{
                 name:bname,
                 region:bregion,
                 status:bstatus,
-                token:localStorage.getItem(Token)
+            },{
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
             })
             .then((response) => {
                 console.log(response.data);
