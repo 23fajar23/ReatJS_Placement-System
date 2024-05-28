@@ -3,10 +3,39 @@ import "../Bar/Bar.css";
 import { useRef,useEffect } from "react";
 import gsap from "gsap";
 
-export const Bar = () => {
+import { ModalBatch } from "../ModalAdd/ModalBatch";
+import axios from "axios";
+import { ModalRemoveBatch } from "../ModalAdd/ModalRemoveBatch";
 
+export const Bar = () => {
+    const [openModalCreate,setOpenModalCreate] = useState(false);
+    const [openModalRemove,setOpenModalRemove] = useState(false);
     const addBtn = useRef(null);
     const rmvBtn = useRef(null);
+    const [batches,setBatches] = useState([]);
+
+    const fetchBatch = (e) => {
+        try{
+            const token = localStorage.getItem('token');
+            axios.get('http://10.10.102.254:8080/api/batch/all',{
+                headers:{
+                    'Content-Type' : 'application/json',
+                    'Authorization' : `Bearer ${token}` 
+                }
+            })
+            .then(response => {
+                console.log(response.data);
+                setBatches(response.data.data);
+                console.log('batch response : ',response.data.data);
+            })
+            .catch(error => {
+                console.log('[ERROR] Fetch -> ',error);
+            })
+        } catch (err){
+            console.log(err);
+        }
+    }
+
 
     useEffect(()=>{
         gsap.set(addBtn.current, {
@@ -25,7 +54,8 @@ export const Bar = () => {
                 borderStyle:"solid",
                 borderColor:"#00bfff"
         })
-    },[])
+        fetchBatch();
+    },[openModalRemove === false,openModalCreate === false])
 
     const inHvr = (element) => {
         gsap.to(element,{
@@ -49,31 +79,24 @@ export const Bar = () => {
     return (
         <>
         <div className="d-flex flex-column ms-5 justify-content-center gap-2">
-            <div onMouseEnter={() => {inHvr(addBtn.current)}} onMouseLeave={() => {outHvr(addBtn.current)}}><button className="btn-batch ms-5" ref={addBtn}><IconPlus/></button></div>
-            <div onMouseEnter={() => {inHvr(rmvBtn.current)}} onMouseLeave={() => {outHvr(rmvBtn.current)}}><button className="btn-batch ms-5" ref={rmvBtn}><IconTrashFilled/></button></div>
+            <div onMouseEnter={() => {inHvr(addBtn.current)}} onMouseLeave={() => {outHvr(addBtn.current)}}><button className="btn-batch ms-5" ref={addBtn} onClick={() => {setOpenModalCreate(true)}}><IconPlus/></button></div>
+            <div onMouseEnter={() => {inHvr(rmvBtn.current)}} onMouseLeave={() => {outHvr(rmvBtn.current)}}><button className="btn-batch ms-5" ref={rmvBtn} onClick={() => {setOpenModalRemove(true)}}><IconTrashFilled/></button></div>
         </div>
         <div className="batch-container">
             <ul className="d-flex gap-2" >
-                <li className="batch-slide">
-                    <span>Batch 1</span>
-                </li>
-                <li className="batch-slide">
-                    <span>Batch 2</span>
-                </li>
-                <li className="batch-slide">
-                    <span>Batch 3</span>
-                </li>
-                <li className="batch-slide">
-                    <span>Batch 4</span>
-                </li>
-                <li className="batch-slide">
-                    <span>Batch 5</span>
-                </li>
-                <li className="batch-slide">
-                    <span>Batch 6</span>
-                </li>
+                {batches
+                .filter(batch => batch.status !== 'NOT_ACTIVE')    
+                .map((batch)=>(
+                    <li key={batch.id} className="batch-slide">
+                        <span>{batch.name}</span><br/>
+                        <span>{batch.status}</span>
+                        <span>{batch.region}</span>
+                    </li>
+                ))}
             </ul>
         </div>
+        <ModalBatch open={openModalCreate} onClose={() => {setOpenModalCreate(false)}} />
+        <ModalRemoveBatch open={openModalRemove} onClose={() => {setOpenModalRemove(false)}}/>
         </>
     )
 } 
