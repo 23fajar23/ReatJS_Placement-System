@@ -4,9 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import axios from "axios";
 import { ModalAddCompany } from "../ModalCompany/ModalAddCompany";
+import { ModalRemoveCompany } from "../ModalCompany/ModalRemoveCompany";
 
 export const CompanyList = () => {
         const [openModalCreate, setOpenModalCreate] = useState(false);
+        const [openModalRemove, setOpenModalRemove] = useState(false);
         const btHv1 = useRef(null);
         const btHv2 = useRef(null);
         const btHv3 = useRef(null);
@@ -39,7 +41,7 @@ export const CompanyList = () => {
             setHandle(btHv1.current)
             setHandle(btHv2.current)
             setHandle(btHv3.current)
-        },[!openModalCreate])
+        },[!openModalCreate,!openModalRemove])
 
 
         const setHandle = (element) => {
@@ -88,7 +90,7 @@ export const CompanyList = () => {
                     <div className="px-3 d-flex gap-2">
                         <button ref={btHv1} className="px-3 rounded-3" onMouseEnter={()=>{handleButtonIn(btHv1.current)}} onMouseLeave={()=>{handleButtonOut(btHv1.current)}} ><IconSearch className="icnx" /></button>
                         <button ref={btHv2} className="px-3 rounded-3" onMouseEnter={()=>{handleButtonIn(btHv2.current)}} onMouseLeave={()=>{handleButtonOut(btHv2.current)}} onClick={() => {setOpenModalCreate(true)}}><IconPlus className="icnx"/></button>
-                        <button ref={btHv3} className="px-3 rounded-3" onMouseEnter={()=>{handleButtonIn(btHv3.current)}} onMouseLeave={()=>{handleButtonOut(btHv3.current)}}><IconTrashFilled className="icnx"/></button>
+                        <button ref={btHv3} className="px-3 rounded-3" onMouseEnter={()=>{handleButtonIn(btHv3.current)}} onMouseLeave={()=>{handleButtonOut(btHv3.current)}} onClick={() => {setOpenModalRemove(true)}}><IconTrashFilled className="icnx"/></button>
                     </div>
                 </div>
                 <div className="scrl my-5">
@@ -110,6 +112,7 @@ export const CompanyList = () => {
                 </div>
             </div>
             <ModalAddCompany open={openModalCreate} onClose={() => { setOpenModalCreate(false)}}/>
+            <ModalRemoveCompany open={openModalRemove} onClose={() => { setOpenModalRemove(false)}}/>
             </>
         )
     }

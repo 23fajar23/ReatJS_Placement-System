@@ -5,7 +5,6 @@ import { useState } from "react"
 export const ModalRemoveBatch = ({open,onClose}) => {
     const [bname,setbname] = useState('');
     const [bregion,setbregion] = useState('');
-    const [bstatus,setstatus] = useState('');
 
     if(!open) return null
     
@@ -17,14 +16,10 @@ export const ModalRemoveBatch = ({open,onClose}) => {
         setbregion(e.target.value);
     }
 
-    const handleSetStatusChange = (e) => {
-        setstatus(e.target.value);
-    }
 
     const handleSubmit = async (e) => {
         console.log('bname',bname);
         console.log('bregion',bregion);
-        console.log('bstatus',bstatus);
         e.preventDefault();
         try{
             const token = localStorage.getItem('token');
@@ -83,7 +78,7 @@ export const ModalRemoveBatch = ({open,onClose}) => {
                             <div className="d-flex flex-column mt-1">
                                 <label>enter the region</label>
                                 <select id="modal-status-dropdown" 
-                                style={{padding:5, borderRadius:5}}>
+                                style={{padding:5, borderRadius:5}} onChange={handleSetRegionChange}>
                                     <option value="">Please choose region</option>
                                     <option value={bregion}>JAKARTA</option>
                                     <option value={bregion}>MALANG</option>
