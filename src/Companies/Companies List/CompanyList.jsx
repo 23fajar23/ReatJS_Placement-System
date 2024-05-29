@@ -9,32 +9,36 @@ import { ModalRemoveCompany } from "../ModalCompany/ModalRemoveCompany";
 export const CompanyList = () => {
         const [openModalCreate, setOpenModalCreate] = useState(false);
         const [openModalRemove, setOpenModalRemove] = useState(false);
+        const [scname,setScName] = useState('');
+
         const btHv1 = useRef(null);
         const btHv2 = useRef(null);
         const btHv3 = useRef(null);
 
         const [companies,setCompanies] = useState([]);
 
+        const handleSearchName = (e) =>{
+            setScName(e.target.value)
+        }
+
         const fetchCompanies = () => {
             try {
                 const token = localStorage.getItem('token');
-                axios.get('http://10.10.102.254:8080/api/company/all',{
+                const response = axios.get('http://10.10.102.254:8080/api/company/all',{
                     headers : {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`
                     }
                 })
-                .then(response => {
-                    setCompanies(response.data.data);
-                    console.log(companies); 
-                })
-                .catch(error => {
-                    console.log('error fetching: ',error);
-                })
+                setCompanies(response.data.data);
+                console.log(companies); 
+                
             } catch (err) {
                 console.log(err);
             }
         }
+
+       
 
         useEffect(()=>{
             fetchCompanies();
@@ -86,7 +90,7 @@ export const CompanyList = () => {
             <>
             <div className="d-flex ssx mt-5" >
                 <div className="search-set d-flex justify-content-between align-content-center">
-                    <input type="search" id="search" className="search-bar"/>
+                    <input type="search" id="search" className="search-bar" value={scname} onChange={}/>
                     <div className="px-3 d-flex gap-2">
                         <button ref={btHv1} className="px-3 rounded-3" onMouseEnter={()=>{handleButtonIn(btHv1.current)}} onMouseLeave={()=>{handleButtonOut(btHv1.current)}} ><IconSearch className="icnx" /></button>
                         <button ref={btHv2} className="px-3 rounded-3" onMouseEnter={()=>{handleButtonIn(btHv2.current)}} onMouseLeave={()=>{handleButtonOut(btHv2.current)}} onClick={() => {setOpenModalCreate(true)}}><IconPlus className="icnx"/></button>
@@ -98,13 +102,13 @@ export const CompanyList = () => {
                             {companies.map((company) => (
                                 <li key={company.id} className="company-list">
                                     <div className="insd">                           
-                                    <span className="cname">{truncateText(company.name,15)}</span>
+                                        <span className="cname">{truncateText(company.name,15)}</span>
                                     </div>
                                     <div className="insd">
-                                    <span className="loc">{truncateText(company.address,20)}</span>
+                                        <span className="loc">{truncateText(company.address,20)}</span>
                                     </div>
                                     <div className="insd">
-                                    <span className="status">{company.status}</span>
+                                        <span className="status">{company.status}</span>
                                     </div>  
                                 </li>
                             ))}
