@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ModalAddEducation } from "../ModalEducation/ModalAddEducation";
 import { useDispatch } from "react-redux";
 import { triggerFetch } from "../../Redux store/reducers/educationSlice";
+import { ModalDeleteEducation } from "../ModalEducation/ModalDeleteEducation";
 
 export const EducationOptionBar = () => {
 
@@ -56,13 +57,14 @@ export const EducationOptionBar = () => {
         dispatch(triggerFetch());
     }
 
+   
+
     return (
         <>
         <div className=" edu-bar">
-            <input className="search-bar" type="search" style={{width:'250px',height:'50px',fontSize:'20px'}}></input>
+            <input className="edu-search-bar" type="search" style={{width:'250px',height:'50px',fontSize:'20px'}}></input>
             <button id="option-education" ref={btHv1} onMouseEnter={() => { handleButtonIn(btHv1.current)}} onMouseLeave={() => {handleButtonOut(btHv1.current)}}><IconSearch/></button>
             <button id="option-education" onMouseEnter={() => { handleButtonIn(btHv2.current)}} onMouseLeave={() => {handleButtonOut(btHv2.current)}} ref={btHv2} onClick={handleModalOpen} ><IconPlus/></button>
-            <button id="option-education" onMouseEnter={() => { handleButtonIn(btHv3.current)}} onMouseLeave={() => {handleButtonOut(btHv3.current)}} ref={btHv3} ><IconX/></button>
         </div>
         <ModalAddEducation open={openModalCreate} onClose={() => setOpenModalCreate(false)}/>
         </>
