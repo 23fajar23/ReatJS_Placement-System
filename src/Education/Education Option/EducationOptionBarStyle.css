@@ -1,0 +1,17 @@
+#option-education{
+    border: 0;
+    background-color: #f4f4f4;
+    border-radius: 5px;
+    padding: 10px;
+}
+.search-bar{
+    border-radius: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    outline: 0;
+    border: solid #00bfff 1px;
+}
+.edu-bar{
+    display: flex;
+    gap:5px;
+}
