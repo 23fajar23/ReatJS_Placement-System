@@ -1,6 +1,9 @@
+import { IconArrowUp } from "@tabler/icons-react";
 import pic from "../../assets/logo.png";
 import { NavBar } from "../../nvbr/NavBar";
 import { EducationSection } from "../EducationSection/EducationSection";
+import { Link } from "react-router-dom";
+import "../../Education/Education Main/EducationStyle.css";
 
 export const Education = () => {
     return (
@@ -10,7 +13,12 @@ export const Education = () => {
                     <img src={pic} style={{height:50,width:50}}/>
                     <NavBar/>
                 </div>
-                <div className="bg-primary">
+                <div>
+                    <Link style={{textDecoration:'none'}} to="/trainees-detail" >
+                        <button id="btn-up-trd">
+                            <IconArrowUp size={25}/>
+                        </button>
+                    </Link>
                     <EducationSection/>
                 </div>
             </div>

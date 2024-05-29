@@ -19,7 +19,7 @@ export const Trainees = () => {
                 <TraineeDetail/>
                 <Link to="/trainees-detail" >
                     <button id="btn-go-trd">
-                        <IconArrowRight size={45}/>
+                        <IconArrowRight size={20}/>
                     </button>
                 </Link>
             </div>

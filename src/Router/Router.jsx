@@ -6,6 +6,7 @@ import { Trainees } from "../Trainee/Trainees";
 import { TraineDetailsParent } from "../Trainee Details Parent/TraineeDetailsParent";
 import { UserSettings } from "../User Settings/UserSettings";
 import { Login } from "../Login/Login";
+import { Education } from "../Education/Education Main/Education";
 
 const Router = createBrowserRouter([
     {
@@ -35,6 +36,10 @@ const Router = createBrowserRouter([
     {
         path:"settings",
         element:<UserSettings/>
+    },
+    {
+        path:"educations",
+        element:<Education/>
     }
 ])
 

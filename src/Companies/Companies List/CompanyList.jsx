@@ -9,7 +9,6 @@ import { ModalRemoveCompany } from "../ModalCompany/ModalRemoveCompany";
 export const CompanyList = () => {
         const [openModalCreate, setOpenModalCreate] = useState(false);
         const [openModalRemove, setOpenModalRemove] = useState(false);
-        const [scname,setScName] = useState('');
 
         const btHv1 = useRef(null);
         const btHv2 = useRef(null);
@@ -17,14 +16,10 @@ export const CompanyList = () => {
 
         const [companies,setCompanies] = useState([]);
 
-        const handleSearchName = (e) =>{
-            setScName(e.target.value)
-        }
-
-        const fetchCompanies = () => {
+        const fetchCompanies = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const response = axios.get('http://10.10.102.254:8080/api/company/all',{
+                const response = await axios.get('http://10.10.102.254:8080/api/company/all',{
                     headers : {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`
@@ -90,7 +85,7 @@ export const CompanyList = () => {
             <>
             <div className="d-flex ssx mt-5" >
                 <div className="search-set d-flex justify-content-between align-content-center">
-                    <input type="search" id="search" className="search-bar" value={scname} onChange={}/>
+                    <input type="search" id="search" className="search-bar" />
                     <div className="px-3 d-flex gap-2">
                         <button ref={btHv1} className="px-3 rounded-3" onMouseEnter={()=>{handleButtonIn(btHv1.current)}} onMouseLeave={()=>{handleButtonOut(btHv1.current)}} ><IconSearch className="icnx" /></button>
                         <button ref={btHv2} className="px-3 rounded-3" onMouseEnter={()=>{handleButtonIn(btHv2.current)}} onMouseLeave={()=>{handleButtonOut(btHv2.current)}} onClick={() => {setOpenModalCreate(true)}}><IconPlus className="icnx"/></button>

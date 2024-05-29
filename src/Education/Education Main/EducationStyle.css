@@ -1,0 +1,16 @@
+#btn-up-trd{
+    margin-top: 38px;
+    border-radius: 20px;
+    height: 5vh;
+    width: 100%;
+    border: 0;
+    color: white;
+    background:linear-gradient(to left,#00bfff,#00bfff);
+    transition: background-color 0.3s , height 0.3s ease;
+    outline: 0;
+}
+#btn-up-trd:hover{
+    background:linear-gradient(to top,#00bfff,#0178df);
+    height: 8vh;
+}
+

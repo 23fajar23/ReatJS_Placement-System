@@ -1,12 +1,9 @@
 import axios from "axios";
-import { useState } from "react"
-
+import { useEffect, useState } from "react"
+import "../EducationSection/EducationSectionStyle.css";
 
 export const EducationSection = () => {
-    const [education,setEducation] = useState('');
-    const handleSetEducationChange = (e) => {
-        setEducation(e.target.value);
-    }
+    const [education,setEducation] = useState([]);
 
     const handleFetch = async () => {
         try{
@@ -17,18 +14,28 @@ export const EducationSection = () => {
                     'Authorization': `Bearer ${token}`
                 }
             })
-            const fetchedData = response.data.data;
+            setEducation(response.data.data);
         } catch(err){
             alert(err)
             console.log(err);
         }
     } 
 
+    useEffect(() =>{
+        handleFetch();
+    },[]);
+
 
     return (
         <>
-        <div>
-            
+        <div className="edu-section-container">
+                <ul className="d-flex gap-5 ul-edu">
+                    {education.map((edu) => (
+                        <li key={edu.id}>
+                            <button className="li-edu">{edu.name} - {edu.value}</button>
+                        </li>
+                    ))}
+                </ul>
         </div>
         </>
     )

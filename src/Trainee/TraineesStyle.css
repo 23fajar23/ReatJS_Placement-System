@@ -7,7 +7,7 @@
     margin-top: 38px;
     margin-left: 25px;
     border-radius: 20px;
-    min-width: 130px;
+    min-width: 40px;
     height: 80vh;
     border: 0;
     color: white;
@@ -18,5 +18,5 @@
 
 #btn-go-trd:hover{
     background:linear-gradient(to right,#0178df,#00bfff);
-    min-width: 180px;
+    min-width: 60px;
 }

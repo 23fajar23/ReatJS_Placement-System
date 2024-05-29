@@ -110,7 +110,7 @@ export const ModalAddCompany = ({open,onClose}) => {
 
                             <div className="d-flex flex-column mt-1">
                                 <label>enter the new status</label>
-                                <select id="modal-status-dropdown" 
+                                <select id="modal-status-dropdown" value={cstatus}
                                 style={{padding:5, borderRadius:5}} onChange={handleSetStatusChange}>
                                     <option value="">Please choose status</option>
                                     <option value="ACTIVE">ACTIVE</option>

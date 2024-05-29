@@ -1,7 +1,7 @@
 #btn-back-trd{
     margin-top: 38px;
     border-radius: 20px;
-    min-width: 130px;
+    min-width: 40px;
     height: 80vh;
     border: 0;
     color: white;
@@ -12,5 +12,22 @@
 
 #btn-back-trd:hover{
     background:linear-gradient(to left,#00bfff,#0178df);
-    min-width: 180px;
+    min-width: 60px;
+}
+
+#btn-down-trd{
+    width: 100%;
+    height: 5vh;
+    border-radius: 20px;
+    color: white;
+    outline: 0;
+    border: 0;
+    margin-top: 10px;
+    background:linear-gradient(to left,#00bfff,#00bfff);
+    transition: background-color 0.3s , height 0.3s ease;
+}
+
+#btn-down-trd:hover{
+    background:linear-gradient(to bottom,#00bfff,#0178df);
+    height: 45px;
 }
