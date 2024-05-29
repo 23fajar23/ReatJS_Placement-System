@@ -2,9 +2,8 @@
 import axios from "axios";
 import { useState } from "react"
 
-export const ModalRemoveBatch = ({open,onClose}) => {
+export const ModalRemoveBatch = ({open,onClose,batchData}) => {
     const [bname,setbname] = useState('');
-    const [bregion,setbregion] = useState('');
 
     if(!open) return null
     
@@ -12,45 +11,28 @@ export const ModalRemoveBatch = ({open,onClose}) => {
         setbname(e.target.value);
     }
 
-    const handleSetRegionChange = (e) => {
-        setbregion(e.target.value);
-    }
-
-
     const handleSubmit = async (e) => {
-        console.log('bname',bname);
-        console.log('bregion',bregion);
         e.preventDefault();
-        try{
-            const token = localStorage.getItem('token');
-            const response = await axios.get('http://10.10.102.254:8080/api/batch/all',{
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                }
-            })
-            console.log(response.data);
-            const fetchedBatches = response.data.data;
-            const batchToDelete = fetchedBatches.find(batch => batch.name === bname);
-
-            if(batchToDelete){
-                await axios.delete(`http://10.10.102.254:8080/api/batch/${batchToDelete.id}`,{
+        if (bname == "") {
+            alert("Batch not yet selected");
+        }else{
+            try{
+                const token = localStorage.getItem('token');
+    
+                await axios.delete(`http://10.10.102.254:8080/api/batch/${bname}`,{
                     headers:{
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`
                     }
                 })
-                console.log('deleted batch : ', batchToDelete);
+    
                 setbname("");
+                alert("Success deactive batch");
                 onClose();
-            } else {
-                console.log('batch not found');
-                alert('batch not found');
+            } catch (err){
+                alert(err);
+                console.log(err);
             }
-
-        } catch (err){
-            alert(err);
-            console.log(err);
         }
     }
 
@@ -58,42 +40,30 @@ export const ModalRemoveBatch = ({open,onClose}) => {
         <>
             <div className="overlay" style={{fontFamily:'Archivo, sans-serif'}}>
                 <div className="modalContainer text-black p-4" >
-                    <h2>Please Insert the batch that will be removed</h2>
+                    <h2>Remove Batch -</h2>
                         <form className="d-flex modal-input" onSubmit={handleSubmit}>
-                            <div className="d-flex flex-column mt-4">
-                                <label>enter the batch name</label>
-                                <input className="mdl-input mt-1" 
-                                style={{
-                                    borderStyle:"solid",
-                                    borderWidth:1,
-                                    borderColor: "black",
-                                    backgroundColor:'white',
-                                }}
-                                id="btname"
-                                value={bname}
-                                onChange={handleSetNameChange}
-                                placeholder="name"></input>
-                            </div>
-
                             <div className="d-flex flex-column mt-1">
-                                <label>enter the region</label>
+                                <label>Batch Active :</label>
                                 <select id="modal-status-dropdown" 
-                                style={{padding:5, borderRadius:5}} onChange={handleSetRegionChange}>
-                                    <option value="">Please choose region</option>
-                                    <option value={bregion}>JAKARTA</option>
-                                    <option value={bregion}>MALANG</option>
+                                    style={{padding:5, borderRadius:5}} value={bname} onChange={handleSetNameChange}>
+                                        
+                                    <option value="">Select Batch</option>
+                                    {batchData
+                                        .filter(batch => batch.status !== 'NOT_ACTIVE')
+                                        .map((batch) => (
+                                            <option value={batch.id}>{batch.name} {batch.region}</option>
+                                        ))}
                                 </select>
                             </div>
 
-
                             <div className="mt-3 d-flex gap-2 justify-content-end">
-                                <button className="confirmed-button text-white bg-success"
-                                type="submit"
-                                >submit</button>
                                 <button className="confirmed-button text-white bg-danger"
+                                type="submit"
+                                >Deactive</button>
+                                <button className="confirmed-button text-white bg-warning"
                                 type="button"
                                 onClick={onClose}
-                                >cancel</button>
+                                >Cancel</button>
                             </div>
                         </form>
                 </div>

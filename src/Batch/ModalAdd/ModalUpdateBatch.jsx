@@ -57,6 +57,7 @@ export const ModalUpdateBatch = ({open,onClose, batchData }) => {
                 onClose();
             })
             .catch((err) => {
+                alert("Batch name is already in use");
                 console.log(err);
             })
         } catch (err){
