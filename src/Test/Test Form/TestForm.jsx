@@ -88,6 +88,7 @@ export const TestForm = () => {
     }
 
     const handlePost = (e) => {
+        console.log(quotaAvaillable);
         e.preventDefault();
         try {
             const token = localStorage.getItem('token');
@@ -129,7 +130,7 @@ export const TestForm = () => {
             })
             .catch(error => {
                 console.log(error);
-                alert(error);
+                // alert(error);
             })
         } catch(err){
             console.log(err);
@@ -266,7 +267,7 @@ export const TestForm = () => {
                     required>
                         <option value="">-- select area --</option>
                         <option value="ALL">ALL</option>
-                        {/* <option value="BATCH">BATCH</option> */}  {/* under maintain*/ }
+                        <option value="BATCH">BATCH</option>  
                     </select>
                     
                         {quotaBatch === 'BATCH' ? 
