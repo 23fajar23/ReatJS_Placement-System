@@ -1,59 +1,297 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../Test Form/TestFormStyle.css";
+import axios from "axios";
+import { IconMinus, IconPlus } from "@tabler/icons-react";
 
 export const TestForm = () => {
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    
+    //fetching
+    const [companyId,setCompanyId] = useState([]);
+    const [educationId,setEducationId] = useState([]);
+    const [batchId,setBatchId] = useState([]);
+    
+    //post
+    const [testStatus,setTestStatus] = useState('');
+    const [education,setEducation] = useState('');
+    const [batch,setBatch] = useState('');
+    const [quotaBatch, setQuotaBatch] = useState("");
+    const [placement,setPlacement] = useState('');
+    const [note,setNote] = useState('');
+    const [company,setCompany] = useState('');
+    const [rolePlacement,setRolePlacement] = useState('');
+    const [nameStage,setNameStage] = useState('');
+    const [dateTime,setDateTime] = useState('');
+    const [typeStage,setTypeStage] = useState('');
+    const [totalQuota,setTotalQuota] = useState('');
+    const [stageStatus,setStageStatus] = useState('');
+    const [quotaAvaillable,setQuotaAvaillable] = useState('');
+    const [typeQuota,setTypeQuota] = useState('');
+
+    const [addBatchSelection,setAddBatchSelection] = useState([]);
+    const [counter,setCounter] = useState(0);
+
+    const handleSetTestStatus = (e) => {
+        setTestStatus(e.target.value)
+    }
+
+    const handleSetBatch = (e) => {
+        setBatch(e.target.value);
+    }
+
+    const handleSetEducation = (e) => {
+        setEducation(e.target.value)
+    }
+
+    const handleSetTypeQuota = (e) => {
+        setTypeQuota(e.target.value)
+    }
+    const handleSetQuotaAvailable = (e) => {
+        setQuotaAvaillable(e.target.value)
+    }
+    const handleSetStageStatus = (e) => {
+        setStageStatus(e.target.value)
+    }
+    const handleSetTotalQuota = (e) => {
+        setTotalQuota(e.target.value)
+    }
+    const handleSetTypeStage = (e) => {
+        setTypeStage(e.target.value)
+    }
+    const handleSetDateTime = (e) => {
+        setDateTime(e.target.value)
+    }
+    const handleSetRolePlacement = (e) => {
+        setRolePlacement(e.target.value)
+    }
+    const handleSetNote = (e) => {
+        setNote(e.target.value)
     };
+    const handleSetNameStage = (e) => {
+        setNameStage(e.target.value)
+    }
+    const handleSetPlacement = (e) => {
+        setPlacement(e.target.value)
+    };
+    const handleAddBatchSelection = () => {
+        setCounter(counter + 1);
+        setAddBatchSelection([...addBatchSelection, { id: '', number: 0 }]);
+    };
+    const handleRemoveBatchSelection = () => {
+        if (counter > 0) {
+            setCounter(counter - 1);
+            setAddBatchSelection(addBatchSelection.slice(0, -1));
+        }
+    };
+    const handleSetQuotaBatch = (e) => {
+        setQuotaBatch(e.target.value)
+    } 
+    const handleSetCompany = (e) => {
+        setCompany(e.target.value)
+    }
+
+    const handlePost = (e) => {
+        e.preventDefault();
+        try {
+            const token = localStorage.getItem('token');
+            axios.post('http://10.10.102.254:8080/api/placement',{
+                placement:placement,
+                note:note,
+                companyId:company,
+                educationId:education,
+                rolePlacement:rolePlacement,
+                nameStage:nameStage,
+                dateTime:dateTime,
+                typeStage:typeStage,
+                totalQuota:totalQuota,
+                stageStatus:stageStatus,
+                quotaAvailable:quotaAvaillable,
+                typeQuota:typeQuota
+            },{
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            .then(response => {
+                console.log(response);
+            })
+            .catch(error => {
+                console.log(error);
+                alert(error);
+            })
+        } catch(err){
+            console.log(err);
+        }
+    }
+
+    const handleFetch = async () => {
+        try {
+            const token = localStorage.getItem('token');
+            const fetchEducation = await axios.get('http://10.10.102.254:8080/api/education/all',{
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+
+            const fetchCompany = await axios.get('http://10.10.102.254:8080/api/company/all',{
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+
+            const fetchBatch = await axios.get('http://10.10.102.254:8080/api/batch/all',{
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            
+            setEducationId(fetchEducation.data.data);
+            setCompanyId(fetchCompany.data.data);
+            setBatchId(fetchBatch.data.data);
+
+        } catch (err) {
+            console.log(err);}
+        }
+
+    useEffect(() => {
+        handleFetch();
+    },[])
+
+    
 
     return (
         <div style={{fontFamily:"Archivo, sans-serif"}}className="test-form-container container ">
             <h1 style={{fontSize:80, marginBottom:20,marginTop:50}}>Test Placement Page</h1>
-            <form className="form-groups" id="form" onSubmit={handleSubmit}>
+            <form className="form-groups" id="form" onSubmit={handlePost}>
                 <div className="form-column">
-                    <label htmlFor="placement">Placement:</label>
-                    <input type="text" id="placement" name="placement" />
+                    <label className="form-label" htmlFor="placement">Placement:</label>
+                    <input type="text" id="placement" name="placement" className="form-input" 
+                    onChange={handleSetPlacement} value={placement}
+                    required />
                     
-                    <label htmlFor="note">Note:</label>
-                    <input type="text" id="note" name="note" />
+                    <label className="form-label" htmlFor="note">Note:</label>
+                    <input type="text" id="note" name="note" className="form-input" 
+                    onChange={handleSetNote} value={note}
+                    required/>
                     
-                    <label htmlFor="rolePlacement">Role Placement:</label>
-                    <input type="text" id="rolePlacement" name="rolePlacement" />
+                    <label className="form-label" htmlFor="rolePlacement">Role Placement:</label>
+                    <input type="text" id="rolePlacement" name="rolePlacement" className="form-input" 
+                    onChange={handleSetRolePlacement} value={rolePlacement}
+                    required/>
                     
-                    <label htmlFor="companyId">Company ID:</label>
-                    <select id="companyId" name="companyId"></select>
+                    <label className="form-label" htmlFor="companyId">Company Name:</label>
+                    <select id="companyId" name="companyId" className="form-input" 
+                    onChange={handleSetCompany} value={company}
+                    required>
+                        <option value="">-- select area --</option>
+                        {companyId.map((comp) => (
+                            <option value={comp.id}>{comp.name}</option>
+                        ))}
+                    </select>
                     
-                    <label htmlFor="educationId">Education ID:</label>
-                    <select id="educationId" name="educationId"></select>
+                    <label className="form-label" htmlFor="educationId">Education Requirement:</label>
+                    <select id="educationId" name="educationId" className="form-input" 
+                    onChange={handleSetEducation} value={education}
+                    required>
+                        <option value="">-- select area --</option>
+                        {educationId.map((edu) => (
+                            <option value={edu.id}>{edu.name} {edu.value}</option>
+                        )) }
+                    </select>
                     
-                    <label htmlFor="statusTest">Status Test:</label>
-                    <input type="text" id="statusTest" name="statusTest" />
-                    
-                    <label htmlFor="typeQuota">Type Quota:</label>
-                    <input type="text" id="typeQuota" name="typeQuota" />
+                    <label className="form-label" htmlFor="statusTest">Test Status:</label>
+                    <select id="statusTest" name="statusTest" className="form-input" 
+                    onChange={handleSetTestStatus} value={testStatus}
+                    required>
+                        <option value="">-- select area --</option>
+                        <option value="ACTIVE">ACTIVE</option>
+                        <option value="NOT_ACTIVE">NOT_ACTIVE</option>
+                    </select>
+
+                    <label className="form-label" htmlFor="typeQuota">Quota Type:</label>
+                    <select id="typeQuota" name="typeQuota" className="form-input"
+                    onChange={handleSetTypeQuota} value={typeQuota} 
+                    required>
+                        <option value="">-- select area --</option>
+                        <option value="ALL">ALL</option>
+                        <option value="BATCH">BATCH</option>
+                    </select>
                 </div>
 
                 <div className="form-column">
-                    <label htmlFor="nameStage">Name Stage:</label>
-                    <input type="text" id="nameStage" name="nameStage" />
+                    <label className="form-label" htmlFor="nameStage">Name Stage:</label>
+                    <input type="text" id="nameStage" name="nameStage" className="form-input" 
+                        onChange={handleSetNameStage} value={nameStage}
+                    required/>
                     
-                    <label htmlFor="dateTime">Date Time:</label>
-                    <input type="text" id="dateTime" name="dateTime" />
+                    <label className="form-label" htmlFor="dateTime">Date Time:</label>
+                    <input type="text" id="dateTime" name="dateTime" className="form-input" 
+                        onChange={handleSetDateTime} value={dateTime}
+                    required/>
                     
-                    <label htmlFor="stageStatus">Stage Status:</label>
-                    <input type="text" id="stageStatus" name="stageStatus" />
                     
-                    <label htmlFor="typeStage">Type Stage:</label>
-                    <input type="text" id="typeStage" name="typeStage" />
+                    <label className="form-label" htmlFor="totalQuota">Total Quota:</label>
+                    <input type="text" id="totalQuota" name="totalQuota" className="form-input" 
+                        onChange={handleSetTotalQuota} value={totalQuota}
+                    required/>
                     
-                    <label htmlFor="totalQuota">Total Quota:</label>
-                    <input type="text" id="totalQuota" name="totalQuota" />
+                    <label className="form-label" htmlFor="quotaAvaillable">Quota Available:</label>
+                    <input type="text" id="quotaAvaillable" name="quotaAvaillable" className="form-input" 
+                        onChange={handleSetQuotaAvailable} value={quotaAvaillable}
+                    required/>
                     
-                    <label htmlFor="quotaAvaillable">Quota Available:</label>
-                    <input type="text" id="quotaAvaillable" name="quotaAvaillable" />
+                    <label className="form-label" htmlFor="stageStatus">Stage Status:</label>
+                    <select id="stageStatus" name="stageStatus" className="form-input" 
+                        onChange={handleSetStageStatus} value={stageStatus}
+                    required>
+                        <option value="">-- select area --</option>
+                        <option value="FINISHED">FINISHED</option>
+                        <option value="COMING_SOON">COMING_SOON</option>
+                    </select>
                     
-                    <button type="submit">Submit</button>
+                    <label className="form-label" htmlFor="typeStage">Stage Type:</label>
+                    <select  id="typeStage" name="typeStage" className="form-input" 
+                        onChange={handleSetTypeStage} value={typeStage}
+                    required>
+                    <option value="">-- select area --</option>
+                        <option value="INTERVIEW">INTERVIEW</option>
+                        <option value="QUESTION">QUESTION</option>
+                        <option value="MINI_PROJECT">MINI_PROJECT</option>
+                    </select>
+                    
+                        {quotaBatch === 'BATCH' ? 
+                        (<>
+                            <button onClick={handleAddBatchSelection} id="add-batch-selection" className="rounded-4 me-3 mb-3 mt-3 btn" style={{backgroundColor:'#00bfff', color:"white"}}><IconPlus size={15}/></button>
+                            <button onClick={handleRemoveBatchSelection} id="add-batch-selection" className="rounded-4 me-3 mb-3 mt-3 btn" style={{backgroundColor:'#00bfff', color:"white"}}><IconMinus size={15}/></button>
+                                <label className="form-label" htmlFor="typeStage">Quota Availlable Batch</label>
+                                <br/>
+
+                                    {counter > 0 && addBatchSelection.map((bt, index) => (
+                                        <div key={index} className="batch-selection">
+                                            <label className="form-label" htmlFor={`batchSelection${index}`}>Quota Available Batch:</label>
+                                            <select id={`batchSelection${index}`} name={`batchSelection${index}`} className="form-input" value={bt.id} onChange={(e) => {
+                                                const updatedSelection = [...addBatchSelection];
+                                                updatedSelection[index].id = e.target.value;
+                                                setAddBatchSelection(updatedSelection);
+                                            }}>
+                                                <option value="">-- select area --</option>
+                                                {batchId.map(btch => (
+                                                    <option value={btch.id}>{btch.name} {btch.region}</option>
+                                                ))}
+                                            </select>
+                                            <input type="number" min='0' className="form-num-input" value={bt.number} onChange={(e) => {
+                                                const updatedSelection = [...addBatchSelection];
+                                                updatedSelection[index].number = e.target.value;
+                                                setAddBatchSelection(updatedSelection);
+                                            }} />
+                                        </div>
+                                    ))}
+                        </>) : null}
+                    <button id="button-form-submit" type="submit">Submit</button>
                 </div>
             </form>
         </div>
