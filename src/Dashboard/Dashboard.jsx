@@ -5,7 +5,7 @@ import { SectionOneText } from "./SectionOne/SectionOneText";
 import { SectionOne } from "./SectionOne/SectionOne";
 import { SectionTwo } from "./SectionTwo/SectionTwo";
 import { LinkBtn } from "./LinkBtn/LinkBtn";
-import { useState,useEffect } from "react";
+import { useState,useEffect, useRef } from "react";
 import Loading from "../Loading/Loading";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,6 +19,7 @@ export const Dashboard = () => {
         const timer = setTimeout(() => {
             setShowForm(true);
         }, 1500);
+        return () => clearTimeout(timer)
     },[])
 
     return (
