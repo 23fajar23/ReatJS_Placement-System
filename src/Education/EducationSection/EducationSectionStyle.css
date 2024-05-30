@@ -1,7 +1,7 @@
 .ul-edu{
     list-style-type: none;
     padding: 0;
-    gap: 40px;
+    gap: 45px;
 }
 .li-edu{
     position: absolute;
@@ -20,7 +20,7 @@
 .li-edu:hover{
   transform: translateY(-40px);
   border: solid white 1px;
-  background: linear-gradient(to top, #00bfff, #00d5ff);
+  background: linear-gradient(to left top, #00bfff , #0080ff);
   /* z-index: 1; */
 }
 

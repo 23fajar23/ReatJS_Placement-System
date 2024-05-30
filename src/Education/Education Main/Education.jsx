@@ -10,8 +10,8 @@ export const Education = () => {
     return (
         <>
             <div className="cntr p-5">
-                <div className="d-flex justify-content-between upx">
-                    <img src={pic} style={{height:50,width:50}}/>
+                <div className="d-flex justify-content-between align-items-center upx">
+                    <img src={pic} style={{height:50,width:50,backgroundColor:"white"}}/>
                     <NavBar/>
                 </div>
                 <div>
@@ -26,7 +26,7 @@ export const Education = () => {
                     </div>
                     <EducationSection />
                 </div>
-                <div>
+                <div className="mt-5">
                     <EducationOptionBar/>
                 </div>
             </div>

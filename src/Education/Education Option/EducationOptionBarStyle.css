@@ -1,13 +1,14 @@
 #option-education{
     border: 0;
     background-color: #f4f4f4;
-    border-radius: 5px;
-    padding: 10px;
+    border-radius: 10px;
+    width: 5vw;
 }
 .edu-search-bar{
     border-radius: 50px;
     padding-left: 20px;
     padding-right: 20px;
+    margin-top: 20px;
     outline: 0;
     border: solid #00bfff 1px;
 }

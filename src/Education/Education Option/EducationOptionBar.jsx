@@ -61,7 +61,7 @@ export const EducationOptionBar = () => {
 
     return (
         <>
-        <div className=" edu-bar">
+        <div className=" edu-bar ">
             <input className="edu-search-bar" type="search" style={{width:'250px',height:'50px',fontSize:'20px'}}></input>
             <button id="option-education" ref={btHv1} onMouseEnter={() => { handleButtonIn(btHv1.current)}} onMouseLeave={() => {handleButtonOut(btHv1.current)}}><IconSearch/></button>
             <button id="option-education" onMouseEnter={() => { handleButtonIn(btHv2.current)}} onMouseLeave={() => {handleButtonOut(btHv2.current)}} ref={btHv2} onClick={handleModalOpen} ><IconPlus/></button>
