@@ -23,11 +23,11 @@ export const TestForm = () => {
     const [nameStage,setNameStage] = useState('');
     const [dateTime,setDateTime] = useState('');
     const [typeStage,setTypeStage] = useState('');
-    const [totalQuota,setTotalQuota] = useState('');
     const [stageStatus,setStageStatus] = useState('');
     const [quotaAvaillable,setQuotaAvaillable] = useState('');
     const [typeQuota,setTypeQuota] = useState('');
 
+    //batch addition
     const [addBatchSelection,setAddBatchSelection] = useState([]);
     const [counter,setCounter] = useState(0);
 
@@ -51,9 +51,6 @@ export const TestForm = () => {
     }
     const handleSetStageStatus = (e) => {
         setStageStatus(e.target.value)
-    }
-    const handleSetTotalQuota = (e) => {
-        setTotalQuota(e.target.value)
     }
     const handleSetTypeStage = (e) => {
         setTypeStage(e.target.value)
@@ -103,7 +100,7 @@ export const TestForm = () => {
                 nameStage:nameStage,
                 dateTime:dateTime,
                 typeStage:typeStage,
-                totalQuota:totalQuota,
+                totalQuota:quotaAvaillable,
                 stageStatus:stageStatus,
                 quotaAvailable:quotaAvaillable,
                 typeQuota:typeQuota
@@ -115,6 +112,20 @@ export const TestForm = () => {
             })
             .then(response => {
                 console.log(response);
+                setTestStatus('');
+                setEducation('');
+                setBatch('');
+                setQuotaBatch('');
+                setPlacement('');
+                setNote('');
+                setCompany('');
+                setRolePlacement('');
+                setNameStage('');
+                setDateTime('');
+                setTypeStage('');
+                setStageStatus('');
+                setQuotaAvaillable('');
+                setTypeQuota('');
             })
             .catch(error => {
                 console.log(error);
@@ -170,22 +181,22 @@ export const TestForm = () => {
                 <div className="form-column">
                     <label className="form-label" htmlFor="placement">Placement:</label>
                     <input type="text" id="placement" name="placement" className="form-input" 
-                    onChange={handleSetPlacement} value={placement}
+                    onChange={handleSetPlacement} value={placement} placeholder="placement location"
                     required />
                     
                     <label className="form-label" htmlFor="note">Note:</label>
                     <input type="text" id="note" name="note" className="form-input" 
-                    onChange={handleSetNote} value={note}
+                    onChange={handleSetNote} value={note} placeholder="test note"
                     required/>
                     
                     <label className="form-label" htmlFor="rolePlacement">Role Placement:</label>
                     <input type="text" id="rolePlacement" name="rolePlacement" className="form-input" 
-                    onChange={handleSetRolePlacement} value={rolePlacement}
+                    onChange={handleSetRolePlacement} value={rolePlacement} placeholder="team role"
                     required/>
                     
                     <label className="form-label" htmlFor="companyId">Company Name:</label>
                     <select id="companyId" name="companyId" className="form-input" 
-                    onChange={handleSetCompany} value={company}
+                    onChange={handleSetCompany} value={company} 
                     required>
                         <option value="">-- select area --</option>
                         {companyId.map((comp) => (
@@ -212,36 +223,22 @@ export const TestForm = () => {
                         <option value="NOT_ACTIVE">NOT_ACTIVE</option>
                     </select>
 
-                    <label className="form-label" htmlFor="typeQuota">Quota Type:</label>
-                    <select id="typeQuota" name="typeQuota" className="form-input"
-                    onChange={handleSetTypeQuota} value={typeQuota} 
-                    required>
-                        <option value="">-- select area --</option>
-                        <option value="ALL">ALL</option>
-                        <option value="BATCH">BATCH</option>
-                    </select>
                 </div>
 
                 <div className="form-column">
                     <label className="form-label" htmlFor="nameStage">Name Stage:</label>
                     <input type="text" id="nameStage" name="nameStage" className="form-input" 
-                        onChange={handleSetNameStage} value={nameStage}
+                        onChange={handleSetNameStage} value={nameStage} placeholder="*EX : STAGE 1"
                     required/>
                     
                     <label className="form-label" htmlFor="dateTime">Date Time:</label>
                     <input type="text" id="dateTime" name="dateTime" className="form-input" 
-                        onChange={handleSetDateTime} value={dateTime}
-                    required/>
-                    
-                    
-                    <label className="form-label" htmlFor="totalQuota">Total Quota:</label>
-                    <input type="text" id="totalQuota" name="totalQuota" className="form-input" 
-                        onChange={handleSetTotalQuota} value={totalQuota}
+                        onChange={handleSetDateTime} value={dateTime} placeholder="yyyy-mm-dd"
                     required/>
                     
                     <label className="form-label" htmlFor="quotaAvaillable">Quota Available:</label>
-                    <input type="text" id="quotaAvaillable" name="quotaAvaillable" className="form-input" 
-                        onChange={handleSetQuotaAvailable} value={quotaAvaillable}
+                    <input type="number" id="quotaAvaillable" name="quotaAvaillable" className="form-input" 
+                        onChange={handleSetQuotaAvailable} value={quotaAvaillable} placeholder="*EX : 8" style={{paddingLeft:10}}
                     required/>
                     
                     <label className="form-label" htmlFor="stageStatus">Stage Status:</label>
@@ -261,6 +258,15 @@ export const TestForm = () => {
                         <option value="INTERVIEW">INTERVIEW</option>
                         <option value="QUESTION">QUESTION</option>
                         <option value="MINI_PROJECT">MINI_PROJECT</option>
+                    </select>
+
+                    <label className="form-label" htmlFor="typeQuota">Quota Type:</label>
+                    <select id="typeQuota" name="typeQuota" className="form-input"
+                    onChange={handleSetTypeQuota} value={typeQuota} 
+                    required>
+                        <option value="">-- select area --</option>
+                        <option value="ALL">ALL</option>
+                        <option value="BATCH">BATCH</option>
                     </select>
                     
                         {quotaBatch === 'BATCH' ? 
