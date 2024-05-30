@@ -10,7 +10,7 @@ export const Test = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowForm(true);
-        }, 2000);
+        }, 1500);
     },[])
     
     return (

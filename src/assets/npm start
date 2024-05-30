@@ -1,0 +1,2 @@
+npm run dev -- --host 10.10.102.10 --port 5173 (public server)
+npm run dev (private server/localhost)

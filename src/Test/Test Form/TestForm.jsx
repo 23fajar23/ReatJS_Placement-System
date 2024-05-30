@@ -2,9 +2,31 @@ import { useEffect, useState } from "react";
 import "../Test Form/TestFormStyle.css";
 import axios from "axios";
 import { IconMinus, IconPlus } from "@tabler/icons-react";
+import { ToastContainer,toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { z } from "zod";
 
 export const TestForm = () => {
 
+    //validation schema
+    const testFormSchema = z.object({
+        placement: z.string().nonempty("Placement is required"),
+        note: z.string().nonempty("Note is required"),
+        rolePlacement: z.string().nonempty("Role Placement is required"),
+        company: z.string().nonempty("Company is required"),
+        education: z.string().nonempty("Education is required"),
+        testStatus: z.string().nonempty("Test Status is required"),
+        nameStage: z.string().nonempty("Name Stage is required"),
+        dateTime: z.string().nonempty("Date Time is required"),
+        quotaAvaillable: z.number().min(1, "Quota Available must be at least 1"),
+        stageStatus: z.string().nonempty("Stage Status is required"),
+        typeStage: z.string().nonempty("Stage Type is required"),
+        typeQuota: z.string().nonempty("Quota Type is required"),
+    });
+
+    
+
+    const notify = () => toast.success("New Test is made!");
     
     //fetching
     const [companyId,setCompanyId] = useState([]);
@@ -87,12 +109,33 @@ export const TestForm = () => {
         setCompany(e.target.value)
     }
 
-    const handlePost = (e) => {
-        console.log(quotaAvaillable);
+    const handlePost = async (e) => {
         e.preventDefault();
+
+        try {
+            testFormSchema.parse({
+                placement,
+                note,
+                rolePlacement,
+                company,
+                education,
+                testStatus,
+                nameStage,
+                dateTime,
+                quotaAvaillable: parseInt(quotaAvaillable),
+                stageStatus,
+                typeStage,
+                typeQuota
+            });
+        } catch (err) {
+            toast.error(err);
+            console.log(err);
+        }
+
+
         try {
             const token = localStorage.getItem('token');
-            axios.post('http://10.10.102.254:8080/api/placement',{
+            await axios.post('http://10.10.102.254:8080/api/placement',{
                 placement:placement,
                 note:note,
                 companyId:company,
@@ -113,6 +156,7 @@ export const TestForm = () => {
             })
             .then(response => {
                 console.log(response);
+                notify();
                 setTestStatus('');
                 setEducation('');
                 setBatch('');
@@ -130,11 +174,11 @@ export const TestForm = () => {
             })
             .catch(error => {
                 console.log(error);
-                // alert(error);
+                // toast.error("Error fetching data!")
             })
         } catch(err){
             console.log(err);
-        }
+        } 
     }
 
     const handleFetch = async () => {
@@ -167,6 +211,7 @@ export const TestForm = () => {
 
         } catch (err) {
             console.log(err);}
+            // toast.error("Error fetching data!")
         }
 
     useEffect(() => {
@@ -177,14 +222,16 @@ export const TestForm = () => {
 
     return (
         <div style={{fontFamily:"Archivo, sans-serif"}}className="test-form-container container ">
-            <h1 style={{fontSize:80, marginBottom:20,marginTop:50}}>Test Placement Page</h1>
+            <h1 style={{fontSize:80 ,marginTop:50}}>Test Placement Form</h1>
+            <h4 style={{fontSize:23,marginBottom:40}}>Manage your test in just a few clicks!</h4>
+            <ToastContainer/>
             <form className="form-groups" id="form" onSubmit={handlePost}>
                 <div className="form-column">
                     <label className="form-label" htmlFor="placement">Placement:</label>
                     <input type="text" id="placement" name="placement" className="form-input" 
                     onChange={handleSetPlacement} value={placement} placeholder="placement location"
                     required />
-                    
+
                     <label className="form-label" htmlFor="note">Note:</label>
                     <input type="text" id="note" name="note" className="form-input" 
                     onChange={handleSetNote} value={note} placeholder="test note"
@@ -232,9 +279,9 @@ export const TestForm = () => {
                         onChange={handleSetNameStage} value={nameStage} placeholder="*EX : STAGE 1"
                     required/>
                     
-                    <label className="form-label" htmlFor="dateTime">Date Time:</label>
-                    <input type="text" id="dateTime" name="dateTime" className="form-input" 
-                        onChange={handleSetDateTime} value={dateTime} placeholder="yyyy-mm-dd"
+                    <label className="form-label" htmlFor="dateTime">Date Time: </label>
+                    <input type="date"  id="dateTime" name="dateTime" className="form-input" 
+                        onChange={handleSetDateTime} value={dateTime} placeholder="yyyy-mm-dd "
                     required/>
                     
                     <label className="form-label" htmlFor="quotaAvaillable">Quota Available:</label>
