@@ -1,8 +1,18 @@
+import { useEffect, useState } from "react";
 import logo from "../assets/logo.png";
 import { NavBar } from "../nvbr/NavBar";
 import { TestForm } from "./Test Form/TestForm";
+import Loading from "../Loading/Loading";
 
 export const Test = () => {
+    const [showForm,setShowForm] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowForm(true);
+        }, 2000);
+    },[])
+    
     return (
         <>
         <div className="cntr p-5">
@@ -11,7 +21,7 @@ export const Test = () => {
                 <NavBar/> 
             </div>
             <div>
-                <TestForm/>
+                {showForm ? <TestForm/> : <Loading/> }
             </div>
         </div>
         </>

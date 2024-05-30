@@ -266,7 +266,7 @@ export const TestForm = () => {
                     required>
                         <option value="">-- select area --</option>
                         <option value="ALL">ALL</option>
-                        <option value="BATCH">BATCH</option>
+                        {/* <option value="BATCH">BATCH</option> */}  {/* under maintain*/ }
                     </select>
                     
                         {quotaBatch === 'BATCH' ? 

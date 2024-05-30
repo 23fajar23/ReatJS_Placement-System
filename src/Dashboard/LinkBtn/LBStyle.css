@@ -7,6 +7,8 @@
 
 .bttx1{
     background-color: #00bfff;
+    padding-top: 5px;
+    padding-bottom: 5px;
     align-self: center;
     border: 0;
     border-radius: 100px;
@@ -22,6 +24,8 @@
 
 .bttx2{
     background-color: #00bfff;
+    padding-top: 5px;
+    padding-bottom: 5px;
     align-self: center;
     border: 0;
     border-radius: 100px;

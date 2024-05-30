@@ -5,8 +5,19 @@ import { SectionOneText } from "./SectionOne/SectionOneText";
 import { SectionOne } from "./SectionOne/SectionOne";
 import { SectionTwo } from "./SectionTwo/SectionTwo";
 import { LinkBtn } from "./LinkBtn/LinkBtn";
+import { useState,useEffect } from "react";
+import Loading from "../Loading/Loading";
 
 export const Dashboard = () => {
+
+    const [showForm,setShowForm] = useState(false);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setShowForm(true);
+        }, 1000);
+    },[])
+
     return (
         <>
         <div className="cntr p-5">
@@ -14,15 +25,21 @@ export const Dashboard = () => {
                 <img src={pic} style={{height:50,width:50,backgroundColor:"white"}}/>
                 <NavBar/>
             </div>
-            <div className="d-flex justify-content-between mt-4">
-                <SectionOneText/>
-                <SectionOne/>
-            </div>
             <div>
-                <LinkBtn/>
-            </div>
-            <div className="mt-5">
-                <SectionTwo/>
+                {showForm ? 
+                <>
+                    <div className="d-flex justify-content-between mt-4">
+                        <SectionOneText/>
+                        <SectionOne/>
+                    </div>
+                    <div>
+                        <LinkBtn/>
+                    </div>
+                    <div className="mt-5">
+                        <SectionTwo/>
+                    </div>
+                </>
+                : <Loading/>}
             </div>
         </div>
         </>
