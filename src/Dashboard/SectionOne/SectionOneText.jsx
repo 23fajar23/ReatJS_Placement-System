@@ -1,9 +1,19 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import "../SectionOne/SecOneStyle.css";
 import gsap from "gsap";
 export const SectionOneText = () => {
 
     const getStarted = useRef(null);
+
+    useEffect(()=>{
+        gsap.set(getStarted.current,{
+            backgroundColor: "#efeff0",
+            color:"black",
+            duration: 0.3,
+            width:"auto",
+            boxShadow: "0px 0px 0px rgba(0, 0, 0, 0)"
+        })
+    },[])
 
     const getStartIn = () => {
         gsap.to(getStarted.current, {

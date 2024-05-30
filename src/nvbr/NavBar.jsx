@@ -1,4 +1,4 @@
-import { IconBrandTeams, IconBuildingSkyscraper, IconForms, IconHome, IconIdBadge2, IconListNumbers, IconMessage, IconUser, IconUsersGroup } from "@tabler/icons-react"
+import { IconBook2, IconBrandTeams, IconBuildingSkyscraper, IconForms, IconHome, IconIdBadge2, IconListNumbers, IconMessage, IconUser, IconUsersGroup } from "@tabler/icons-react"
 import "../nvbr/Nvb.css";
 import { useRef, useState } from "react";
 import gsap from "gsap";
@@ -27,7 +27,7 @@ export const NavBar = () => {
     }
 
     const labels = [
-        "team",
+        "educations",
         "tests",
         "client",
         "batch",
@@ -38,7 +38,7 @@ export const NavBar = () => {
    
 
     const icons = [
-        <><IconBrandTeams className="icn"/> <span>{indicator === 0 && labels[0]}</span></>,
+        <Link to="/educations" style={{textDecoration:"none", color:"white"}}><IconBook2 className="icn"/> <span>{indicator === 0 && labels[0]}</span></Link>,
         <Link to="/test" style={{textDecoration:"none", color:"white"}}><IconListNumbers className="icn"/> <span>{indicator === 1 && labels[1]}</span></Link>,
         <Link to="/companies" style={{textDecoration:"none", color:"white"}}><IconBuildingSkyscraper className="icn"/> <span>{indicator === 2 && labels[2]}</span></Link>,
         <Link to="/batch" style={{textDecoration:"none", color:"white"}}><IconUsersGroup className="icn"/> <span>{indicator === 3 && labels[3]}</span></Link>,

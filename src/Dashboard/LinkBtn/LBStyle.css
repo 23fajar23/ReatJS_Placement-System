@@ -4,13 +4,33 @@
     color: black;
     background-color: white;
 }
-.bgbtnx{
+
+.bttx1{
     background-color: #00bfff;
-    padding: 10px;
-    
-}
-.bttx{
-    background-color: transparent;
+    align-self: center;
     border: 0;
     border-radius: 100px;
+    padding-left:10px ;
+    padding-right: 10px;
+    transition: background-color 0.5s, padding-right 0.5s;
+}
+
+.bttx1:hover{
+    background-color: #008cff;
+    padding-right: 30px;
+}
+
+.bttx2{
+    background-color: #00bfff;
+    align-self: center;
+    border: 0;
+    border-radius: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: background-color 0.5s, padding-left 0.5s;
+}
+
+.bttx2:hover{
+    background-color: #008cff;
+    padding-left: 30px;
 }
