@@ -78,7 +78,16 @@ export const TestForm = () => {
         setTypeStage(e.target.value)
     }
     const handleSetDateTime = (e) => {
-        setDateTime(e.target.value)
+        const inputDate = new Date(e.target.value);
+        const currentDate = new Date();
+        
+        currentDate.setHours(0,0,0,0);
+
+        if(inputDate < currentDate){
+            toast.warn('Date cannot be set before the current date')
+        } else {
+            setDateTime(e.target.value)
+        }
     }
     const handleSetRolePlacement = (e) => {
         setRolePlacement(e.target.value)
