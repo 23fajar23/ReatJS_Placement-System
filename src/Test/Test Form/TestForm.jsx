@@ -77,7 +77,7 @@ export const TestForm = () => {
     const handleSetTypeStage = (e) => {
         setTypeStage(e.target.value)
     }
-    const handleSetDateTime = (e) => {
+    const handleSetDateTime = (e) => {  
         const inputDate = new Date(e.target.value);
         const currentDate = new Date();
         

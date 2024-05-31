@@ -1,5 +1,5 @@
 .batch-slide{
-    background: linear-gradient(to bottom, #00bfff, #0026ff);
+    background: linear-gradient(to bottom, #00bfff, #0267ff);
     /* background-color:#00bfff; */
     height:70vh;
     width:20vw;
@@ -25,7 +25,6 @@
      width: 35vw;
     }
 }
-
 
 
 .fx{
@@ -63,4 +62,9 @@ border-radius: 10px;
     border-radius: 5px;
     width: 4vw;
     height: 8vh;
+}
+
+.pixs {
+    width: 100%;
+    padding: 5px;
 }
