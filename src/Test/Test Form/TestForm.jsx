@@ -10,14 +10,20 @@ export const TestForm = () => {
 
     //validation schema
     const testFormSchema = z.object({
-        placement: z.string().nonempty("Placement is required"),
+        placement: z.string().refine(val => /^[a-zA-Z\s]+$/.test(val), {
+            message: "Placement cannot contain numbers",
+          }),
         note: z.string().nonempty("Note is required"),
-        rolePlacement: z.string().nonempty("Role Placement is required"),
+        rolePlacement: z.string().refine(val => /^[a-zA-Z\s]+$/.test(val), {
+            message: "Role placement cannot contain numbers",
+          }),
         company: z.string().nonempty("Company is required"),
         education: z.string().nonempty("Education is required"),
         testStatus: z.string().nonempty("Test Status is required"),
-        nameStage: z.string().nonempty("Name Stage is required"),
-        dateTime: z.string().nonempty("Date Time is required"),
+        nameStage: z.string().refine(val => /^[a-zA-Z\s]+$/.test(val), {
+            message: "Role placement cannot contain only numbers",
+          }),
+        dateTime: z.string().date("Date Time is required"),
         quotaAvaillable: z.number().min(1, "Quota Available must be at least 1"),
         stageStatus: z.string().nonempty("Stage Status is required"),
         typeStage: z.string().nonempty("Stage Type is required"),
@@ -122,7 +128,7 @@ export const TestForm = () => {
         e.preventDefault();
 
         try {
-            testFormSchema.parse({
+            testFormSchema.safeParse({
                 placement,
                 note,
                 rolePlacement,
