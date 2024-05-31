@@ -1,6 +1,10 @@
 import { useEffect, useRef } from "react";
 import "../User/UserStyle.css";
-import gsap, { Linear } from "gsap";
+import gsap from "gsap";
+import { Link } from "react-router-dom";
+import {  IconBaselineDensityMedium, IconBaselineDensitySmall, IconEdit, IconLogout2, IconViewfinder } from "@tabler/icons-react";
+
+
 export const User = () => {
     const usrbtn1 = useRef(null);
     const usrbtn2 = useRef(null);
@@ -29,7 +33,7 @@ export const User = () => {
 
     const backBtn = (elm) => {
         gsap.to(elm,{
-            height:"6vh",
+            height:'auto',
             background:"white",
             color:"black",
             duration:0.3
@@ -53,9 +57,10 @@ export const User = () => {
                 onMouseEnter={() => {risedBtn(usrbtn2.current)}}
                 onMouseLeave={()  => {backBtn(usrbtn2.current)}}>Edit Preference</button>
 
-                <button id="option-user" ref={usrbtn3}
+                <Link to="/login" id="link-option-user" >
+                <button id="option-user" ref={usrbtn3} 
                 onMouseEnter={() => {risedBtn(usrbtn3.current)}}
-                onMouseLeave={()  => {backBtn(usrbtn3.current)}}>Set All Default</button>
+                onMouseLeave={()  => {backBtn(usrbtn3.current)}}>Log Out</button></Link>
             </div>
         </div>
         </>

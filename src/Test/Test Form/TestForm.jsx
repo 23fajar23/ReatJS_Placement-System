@@ -303,7 +303,7 @@ export const TestForm = () => {
                         onChange={handleSetStageStatus} value={stageStatus}
                     required>
                         <option value="">-- select area --</option>
-                        <option value="FINISHED">FINISHED</option>
+                        <option value="ONGOING">ONGOING</option>
                         <option value="COMING_SOON">COMING_SOON</option>
                     </select>
                     
@@ -323,7 +323,7 @@ export const TestForm = () => {
                     required>
                         <option value="">-- select area --</option>
                         <option value="ALL">ALL</option>
-                        <option value="BATCH">BATCH</option>  
+                        <option value="BATCH">BATCH [UNDER-MAINTENANCE]</option>  
                     </select>
                     
                         {quotaBatch === 'BATCH' ? 

@@ -24,9 +24,18 @@
   display: flex;
   justify-content: end;
   flex-direction: column;
+  padding-bottom: 40px;
 }
 
 #option-user{
+  border-radius: 8px;
+  height: 6vh;
+  width: 100%;
+  font-size: larger;
+  
+}
+
+#link-option-user{
   border-radius: 8px;
   height: 6vh;
   width: 100%;
