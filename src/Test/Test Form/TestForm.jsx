@@ -10,20 +10,14 @@ export const TestForm = () => {
 
     //validation schema
     const testFormSchema = z.object({
-        placement: z.string().refine(val => /^[a-zA-Z\s]+$/.test(val), {
-            message: "Placement cannot contain numbers",
-          }),
+        placement: z.string().nonempty("placement is required"),
         note: z.string().nonempty("Note is required"),
-        rolePlacement: z.string().refine(val => /^[a-zA-Z\s]+$/.test(val), {
-            message: "Role placement cannot contain numbers",
-          }),
+        rolePlacement: z.string().nonempty("role placement is required"),
         company: z.string().nonempty("Company is required"),
         education: z.string().nonempty("Education is required"),
         testStatus: z.string().nonempty("Test Status is required"),
-        nameStage: z.string().refine(val => /^[a-zA-Z\s]+$/.test(val), {
-            message: "Role placement cannot contain only numbers",
-          }),
-        dateTime: z.string().date("Date Time is required"),
+        nameStage: z.string().nonempty("namestage is required"),
+        dateTime: z.string().nonempty('date required'),
         quotaAvaillable: z.number().min(1, "Quota Available must be at least 1"),
         stageStatus: z.string().nonempty("Stage Status is required"),
         typeStage: z.string().nonempty("Stage Type is required"),
@@ -33,6 +27,7 @@ export const TestForm = () => {
     
 
     const notify = () => toast.success("New Test is made!");
+    const [formErrors, setFormErrors] = useState({});
     
     //fetching
     const [companyId,setCompanyId] = useState([]);
@@ -127,8 +122,8 @@ export const TestForm = () => {
     const handlePost = async (e) => {
         e.preventDefault();
 
-        try {
-            testFormSchema.safeParse({
+       
+            const result =  testFormSchema.safeParse({
                 placement,
                 note,
                 rolePlacement,
@@ -142,13 +137,17 @@ export const TestForm = () => {
                 typeStage,
                 typeQuota
             });
-        } catch (err) {
-            toast.error(err);
-            console.log(err);
-        }
+            if (!result.success) {
+                const fieldErrors = {};
+                result.error.errors.forEach((error) => {
+                    const fieldName = error.path.join('.');
+                    fieldErrors[fieldName] = error.message;
+                });
+                setFormErrors(fieldErrors);
+                return;
+            }
 
-
-        try {
+        try{
             const token = localStorage.getItem('token');
             await axios.post('http://10.10.102.254:8080/api/placement',{
                 placement:placement,
@@ -186,15 +185,18 @@ export const TestForm = () => {
                 setStageStatus('');
                 setQuotaAvaillable('');
                 setTypeQuota('');
+                setFormErrors({}); //clearing error
             })
             .catch(error => {
                 console.log(error);
-                // toast.error("Error fetching data!")
+                toast.error(error);
+                
             })
         } catch(err){
             console.log(err);
         } 
     }
+
 
     const handleFetch = async () => {
         try {
@@ -246,16 +248,19 @@ export const TestForm = () => {
                     <input type="text" id="placement" name="placement" className="form-input" 
                     onChange={handleSetPlacement} value={placement} placeholder="placement location"
                     required />
+                    {formErrors.placement && <p className="error-message">{formErrors.placement}</p>}
 
                     <label className="form-label" htmlFor="note">Note:</label>
                     <input type="text" id="note" name="note" className="form-input" 
                     onChange={handleSetNote} value={note} placeholder="test note"
                     required/>
+                    {formErrors.note && <p className="error-message">{formErrors.note}</p>}
                     
                     <label className="form-label" htmlFor="rolePlacement">Role Placement:</label>
                     <input type="text" id="rolePlacement" name="rolePlacement" className="form-input" 
                     onChange={handleSetRolePlacement} value={rolePlacement} placeholder="team role"
                     required/>
+                    {formErrors.rolePlacement && <p className="error-message">{formErrors.rolePlacement}</p>}
                     
                     <label className="form-label" htmlFor="companyId">Company Name:</label>
                     <select id="companyId" name="companyId" className="form-input" 
@@ -263,7 +268,7 @@ export const TestForm = () => {
                     required>
                         <option value="">-- select area --</option>
                         {companyId.map((comp) => (
-                            <option value={comp.id}>{comp.name}</option>
+                            <option key={comp.id} value={comp.id}>{comp.name}</option>
                         ))}
                     </select>
                     
@@ -293,6 +298,7 @@ export const TestForm = () => {
                     <input type="text" id="nameStage" name="nameStage" className="form-input" 
                         onChange={handleSetNameStage} value={nameStage} placeholder="*EX : STAGE 1"
                     required/>
+                    {formErrors.nameStage && <p className="error-message">{formErrors.nameStage}</p>}
                     
                     <label className="form-label" htmlFor="dateTime">Date Time: </label>
                     <input type="date"  id="dateTime" name="dateTime" className="form-input" 
@@ -300,7 +306,7 @@ export const TestForm = () => {
                     required/>
                     
                     <label className="form-label" htmlFor="quotaAvaillable">Quota Available:</label>
-                    <input type="number" id="quotaAvaillable" name="quotaAvaillable" className="form-input" 
+                    <input type="number" id="quotaAvaillable" min={0} name="quotaAvaillable" className="form-input" 
                         onChange={handleSetQuotaAvailable} value={quotaAvaillable} placeholder="*EX : 8" style={{paddingLeft:10}}
                     required/>
                     
