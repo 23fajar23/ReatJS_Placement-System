@@ -8,9 +8,9 @@ export const ModalDeleteEducation = ({open,onClose,name}) => {
     const [ename,setEname] = useState('');
     if(!open) return null
 
-    const handleDelete = async () => {
+    const handleDelete = () => {
         if(ename === name){
-            await dispatch(deleteEducationData(name));
+            dispatch(deleteEducationData(name));
             onClose();
         } else {
             alert('Confirmation name does not match');

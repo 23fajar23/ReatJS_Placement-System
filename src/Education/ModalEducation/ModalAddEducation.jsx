@@ -18,7 +18,7 @@ export const ModalAddEducation = ({open,onClose}) => {
         e.preventDefault();
         try{
             const token = localStorage.getItem('token');
-            axios.post('http://10.10.102.254:8080/api/education',{
+            axios.post('http://localhost:8080/api/education',{
                 name:ename,
                 value:evalue,
             },{

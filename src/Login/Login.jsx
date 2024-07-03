@@ -17,7 +17,6 @@ export const Login = () => {
     const [exr,setExr] = useState(false); 
     
     const redResponse = () => {
-        console.log("gsap triggered");
         gsap.to([inputField1.current,inputField2.current],{
             borderBottom:"solid 1px red"
         })
