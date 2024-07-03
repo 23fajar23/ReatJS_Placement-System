@@ -2,7 +2,6 @@ import { useEffect, useRef } from "react";
 import "../User/UserStyle.css";
 import gsap from "gsap";
 import { Link } from "react-router-dom";
-import {  IconBaselineDensityMedium, IconBaselineDensitySmall, IconEdit, IconLogout2, IconViewfinder } from "@tabler/icons-react";
 
 
 export const User = () => {
