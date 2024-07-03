@@ -201,21 +201,21 @@ export const TestForm = () => {
     const handleFetch = async () => {
         try {
             const token = localStorage.getItem('token');
-            const fetchEducation = await axios.get('http://10.10.102.254:8080/api/education/all',{
+            const fetchEducation = await axios.get('http://localhost:8080/api/education/all',{
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 }
             })
 
-            const fetchCompany = await axios.get('http://10.10.102.254:8080/api/company/all',{
+            const fetchCompany = await axios.get('http://localhost:8080/api/company/all',{
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 }
             })
 
-            const fetchBatch = await axios.get('http://10.10.102.254:8080/api/batch/all',{
+            const fetchBatch = await axios.get('http://localhost:8080/api/batch/all',{
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
