@@ -20,7 +20,7 @@ export const TraineeList = () => {
     const fetchTrainee = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://10.10.102.254:8080/api/customer/all', {
+            const response = await axios.get('http://localhost:8080/api/customer/all', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`

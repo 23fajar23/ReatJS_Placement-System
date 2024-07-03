@@ -1,10 +1,8 @@
 import { IconAlignLeft, IconDetails, IconEdit } from "@tabler/icons-react";
 import "./TraineeDetailStyle.css";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 export const TraineeDetail = () => {
-    const [openModal,setOpenModal] = useState(false);
     return(
         <div className="cx mt-5">
         <div className="container xcntr">
