@@ -1,4 +1,4 @@
-import { IconEdit, IconPencilBolt } from "@tabler/icons-react";
+import { IconEdit } from "@tabler/icons-react";
 import "../Company Detail/CompanyDetailStyle.css";
 import { useState } from "react";
 import { ModalCompany } from "./ModalCompany";

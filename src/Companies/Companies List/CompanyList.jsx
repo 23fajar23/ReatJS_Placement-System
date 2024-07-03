@@ -20,17 +20,17 @@ export const CompanyList = () => {
     const fetchCompanies = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://10.10.102.254:8080/api/company/all', {
+            const response = await axios.get('http://localhost:8080/api/company/all', {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
                 }
             });
             setCompanies(response.data.data);
-            setLoading(false); // Set loading to false after data is fetched
+            setLoading(false); 
         } catch (err) {
             console.log(err);
-            setLoading(false); // Set loading to false in case of error
+            setLoading(false); 
         }
     };
 

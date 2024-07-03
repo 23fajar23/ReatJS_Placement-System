@@ -18,7 +18,7 @@ export const ModalRemoveCompany = ({open,onClose}) => {
         e.preventDefault();
         try{
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://10.10.102.254:8080/api/company/all',{
+            const response = await axios.get('http://localhost:8080/api/company/all',{
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`
@@ -30,7 +30,7 @@ export const ModalRemoveCompany = ({open,onClose}) => {
 
                 if(companyToDelete){
                     try {
-                        axios.delete(`http://10.10.102.254:8080/api/company/${companyToDelete.id}`,{
+                        axios.delete(`http://localhost:8080/api/company/${companyToDelete.id}`,{
                             headers:{
                                 'Content-Type':'application/json',
                                 'Authorization':`Bearer ${token}`
