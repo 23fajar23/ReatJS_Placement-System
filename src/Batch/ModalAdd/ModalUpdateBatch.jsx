@@ -40,7 +40,7 @@ export const ModalUpdateBatch = ({open,onClose, batchData }) => {
         e.preventDefault();
         try{
             const token = localStorage.getItem('token');
-            axios.put('http://10.10.102.254:8080/api/batch',{
+            axios.put('http://localhost:8080/api/batch',{
                 id: batchData.id,
                 name:bname,
                 region:bregion,

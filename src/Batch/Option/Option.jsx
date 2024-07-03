@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useRef } from "react";
+import { useEffect, useRef } from "react";
 import "../Option/Option.css";
 import gsap from "gsap";
 

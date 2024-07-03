@@ -19,7 +19,7 @@ export const ModalRemoveBatch = ({open,onClose,batchData}) => {
             try{
                 const token = localStorage.getItem('token');
     
-                await axios.delete(`http://10.10.102.254:8080/api/batch/${bname}`,{
+                await axios.delete(`http://localhost:8080/api/batch/${bname}`,{
                     headers:{
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`

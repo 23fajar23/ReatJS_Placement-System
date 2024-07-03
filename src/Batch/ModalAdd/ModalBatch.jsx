@@ -26,7 +26,7 @@ export const ModalBatch = ({open,onClose}) => {
         e.preventDefault();
         try{
             const token = localStorage.getItem('token');
-            axios.post('http://10.10.102.254:8080/api/batch',{
+            axios.post('http://localhost:8080/api/batch',{
                 name:bname,
                 region:bregion,
                 status:bstatus,
